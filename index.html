@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Functional Programming In Javascript</title>
+  <title>Angular and D3</title>
   
   <link rel="stylesheet" href="reveal/css/reveal.min.css">
   <link rel="stylesheet" href="reveal/lib/css/googlecode.css">
@@ -17,97 +17,649 @@
     <div class="slides">
 
 <section data-markdown class=front><script type="text/template">
-# SOMETHING!!
+# Angular and D3
 
 [@timruffles](http://twitter.com/timruffles)
 [@sidekicksrc](http://twitter.com/sidekicksrc)
 </script></section>
 
+<section data-markdown><script type="text/template">
+## Angular in 5 mins
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## "HTML for web apps!"
+</script></section>
+
+<section data-markdown><script type="text/template">
+## TBL never guessed what we'd do with the WWW
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Interactive apps
+
+1. show user data
+1. let user update data
+1. GOTO 1
+</script></section>
+
 <section data-markdown ><script type="text/template">
-# Any questions?
+## Hand coding this is boring
+</script></section>
+
+<section>
+  <h2>Let Angular do it...</h2>
+  <script type=code-sample code-sample>
+    <div ng-controller="FirstCtrl as ctrl">
+      <h4>Hello {{ ctrl.meetup }}!</h4>
+      <input ng-model='ctrl.meetup'>
+    </div>
+    <code class=controller>
+      module.controller('FirstCtrl', function() {
+        this.meetup = "London D3";
+      })
+    </code>
+  </script>
+</section>
+
+<section data-markdown ><script type="text/template">
+## What is this `ng-` stuff?
+</script></section>
+
+<section data-markdown ><script type="text/template">
+## "HTML for web apps!"
+</script></section>
+
+<section data-markdown ><script type="text/template">
+## Build HTML up into a language for apps
+</script></section>
+
+<section data-markdown ><script type="text/template">
+## directives: ng's extensions to HTML
+</script></section>
+
+<section data-markdown ><script type="text/template">
+## Invoke however you like
+
+```html
+<your-directive>
+</your-directive>
+
+<div your-directive>
+</div>
+
+<div data-your-directive>
+</div>
+```
+</script></section>
+
+<section data-markdown ><script type="text/template">
+## ...declare your app, don't write imperative code
+</script></section>
+
+<section data-markdown ><script type="text/template">
+## Though quite clever...
+</script></section>
+
+<section data-markdown ><script type="text/template">
+## it's easy to start using `ng`
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Complete ng app
+
+<code ng-non-bindable>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;!-- tells angular which module to use --&gt;
+&lt;body ng-app=demo&gt;
+  &lt;h3 ng-controller='DemoCtrl as ctrl'&gt;
+    Hello {{ ctrl.meetup }}
+  &lt;/h3&gt;
+
+  &lt;!-- pull in ng, then your code --&gt;
+  &lt;script src="angular.js"&gt;&lt;/script&gt;
+  &lt;script src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+</code>
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## So: where does D3 live in Angular?
+
+</script></section>
+
+<section data-markdown data-state=title><script type="text/template">
+## Directives!
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Let's dive in and make a directive
+</script></section>
+
+<section data-markdown><script type="text/template">
+```javascript
+// here we're creating a module called app
+angular.module("app", [])
+.directive("donutChart", donutChart);
+```
+</script></section>
+
+<section data-markdown><script type="text/template">
+```javascript
+angular.module("app", [])
+.directive("donutChart", donutChart);
+
+/* donut chart, ready to be used inappropriately just cos
+   it looks damn cool */
+function donutChart() {
+  return {
+    /* this is our directive's config */
+  };
+}
+```
+</script></section>
+
+<section data-markdown><script type="text/template">
+```javascript
+function donutChart() {
+  return {
+    restrict: "E",
+    controller: function(
+      $element
+    ) {
+      /* an instance of controller
+         is created each time angular sees
+         `<donut-chart>` and is given element */
+    },
+  }
+}
+```
+</script></section>
+
+
+
+<section data-markdown><script type="text/template">
+```javascript
+function donutChart() {
+  return {
+    restrict: "E",
+    // our public API - attributes on `<donut-chart>`
+    scope: {
+      data: "=",
+      valueAttribute: "=",
+      onSelected: "&",
+    },
+    bindToController: true,
+    controller: function() {
+      this.data // Array
+      this.valueAttribute // String
+      this.onSelected // Function
+    },
+  }
+}
+```
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Defining and using
+
+```javascript
+function donutChart() {
+  return {
+    scope: {
+      data: "=",
+      valueAttribute: "@",
+      onSelected: "&",
+    },
+    controller: function() {
+      // coming up next...
+    },
+}
+```
+
+```html
+<donut-chart
+  data='ctrl.data'
+  value-attribute='pungency'
+  on-select='ctrl.detail = $data'
+>
+</donut-chart>
+```
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Defining and using
+
+```javascript
+function donutChart() {
+  return {
+    // as before...
+    controller: function($scope, $element) {
+
+      // tell angular to keep an eye on these values... [1]
+      scope.$watch("ctrl.valueAttribute", render);
+      scope.$watchCollection("ctrl.data", render);
+
+      var pie = d3.layout.pie()
+        .value(function(d) {
+          return d[scope.valueAccessor || "value"];
+        })
+
+      // [1] and call render on changes
+      function render() {
+        var update = d3.select($element[0])
+          .selectAll(".slice")
+          .data(pie(this.data || []))
+
+        // standard D3 code!
+      }
+    },
+}
+```
+
+</script></section>
+
+<section>
+<script type=code-sample code-sample>
+  <div ng-controller="SliceCtrl as ctrl">
+    <donut-chart data='ctrl.data'>
+    </donut-chart>
+    <button ng-click='ctrl.add()'>Add</button>
+  </div>
+
+  <code class=controller>
+    module.controller('SliceCtrl', function() {
+      this.data = [];
+      this.add = function() {
+        this.data.push({ value: Math.random() });
+      };
+    })
+    .directive("donutChart", function() {
+      return {
+        restrict: "E",
+        scope: {
+          data: "=",
+        },
+        controller: DonutChartCtrl,
+        bindToController: true,
+        controllerAs: "ctrl",
+      }
+    });
+  </code>
+</script>
+
+</section>
+
+<section data-markdown><script type="text/template">
+## Events in detail
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Interactions with `&`
+
+- `&` bindings are your friend
+
+```html
+<donut-chart
+  on-item-click="ctrl.selectedValue += $data.value"
+  on-item-hover='ctrl.toggleHover($event)'
+>
+</donut-chart>
+```
+
+```javascript
+.on("click", function(d, i) {
+  // pass object of local values for expression
+  self.onItemClick({
+    $data: d, 
+    $index: i,
+  })
+})
+```
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Cheat sheet: `d3` in `ng`
+
+- `ng`: extending HTML for apps
+- d3: part of the view, so lives in directives
+- directives: declarative visualisations
+</script></section>
+
+
+
+<section data-markdown data-state=title><script type="text/template">
+## So what?
+</script></section>
+
+<section data-markdown><script type="text/template">
+## This!
+
+```html
+<donut-chart
+  ng-repeat="dataSet in ctrl.dataSets"
+
+  data="dataSets"
+  color-scale="ctrl.colorScale"
+  width="100"
+  height="100"
+  inner-radius=10
+  on-selected="otherCtrl.selected($data)"
+  >
+</donut-chart>
+```
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Declarative benefits
+
+- readable
+- designer friendly
+- composes well (e.g `ng-repeat`)
+
+</script></section>
+
+
+<section data-markdown data-state=title><script type="text/template">
+## Collaborating
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Playing to their strengths
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Angular
+
+- productive
+- declarative: routine stuff
+- handling data input
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## D3
+
+- interaction
+- animation
+- cooperating behaviours
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+
+![vs](img/visual-vs-input.png)
+
+</script></section>
+
+<section data-markdown data-state=title><script type="text/template">
+## A doubt
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Using `ng` and `d3` together started me thinking
+</script></section>
+
+<section data-markdown><script type="text/template">
+## What do Angular apps look like?
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+
+![hier](img/hierarchy.png)
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Like every app in the world
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Boxes in boxes in boxes
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Why?
+
+</script></section>
+
+
+<section data-markdown><script type="text/template">
+## Objects are possessive
+
+![mine](img/mine.gif)
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## OO promotes hierachy and taxonomies
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Alan Kay
+
+> OOP to me means only messaging [and] _local retention and protection and hiding_ of _state_
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## The culprit
+
+> _local retention and protection and hiding_ of _state_
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## State?
+
+- current data
+- current visual state
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Users don't care
+</script></section>
+
+<section data-markdown><script type="text/template">
+## We have programmer vision :(
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Users don't see hierarchies
+</script></section>
+
+<section data-markdown><script type="text/template">
+## They just see 'stuff' on screen
+</script></section>
+
+<section data-markdown><script type="text/template">
+## No limit to their imaginations
+</script></section>
+
+<section data-markdown data-state=title><script type="text/template">
+## D3 sees like the user sees
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Just stuff on screen, and data
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Same element can be owned by 5 visualisations
+</script></section>
+
+<section>
+
+<video width="1024" height="600" controls=controls>
+  <source src="img/transitions.mp4" type="video/mp4">
+</video>
+
+</section>
+
+<section data-markdown><script type="text/template">
+## What would happen in OO?
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Would likely be one big visualisation
+</script></section>
+
+<section data-markdown><script type="text/template">
+## OO's atoms are objects
+
+![oo](img/oo.png)
+</script></section>
+
+<section data-markdown><script type="text/template">
+## objects
+
+- inflict hierarchy and divisions
+- 'programmer vision'
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## #coderexecuses
+
+We can't do cool thing X because:
+
+- it'd break my class hierarchy
+- what about encapsulation?
+
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Creeping coder-itis
+
+- a million reasons to say no
+</script></section>
+
+<section data-markdown><script type="text/template">
+## d3's view 
+
+- collaboration happens naturally
+- transitions work with intermediary states
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Why?
+</script></section>
+
+<section data-markdown><script type="text/template">
+### d3's atoms
+
+![fp](img/fp.png)
+</script></section>
+
+<section data-markdown><script type="text/template">
+## elements and data
+
+- shared by behaviour
+- same atoms as normal humans (not us)
+</script></section>
+
+<section data-markdown data-state=title><script type="text/template">
+## I started to wonder...
+</script></section>
+
+<section data-markdown><script type="text/template">
+## What if D3 was in control?
+</script></section>
+
+<section data-markdown><script type="text/template">
+## What if...
+
+- declarative for really, really boring stuff
+- d3 imperative for main flow control
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Traditional
+
+- boxes in boxes in boxes...
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Flipped
+
+- app like a canvas
+- 'sensible' code completely detached from view
+- Angular handles data input
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Cons
+
+- less declarative
+- no excuses ;)
+</script></section>
+
+<section data-markdown><script type="text/template">
+## Pros
+</script></section>
+
+<section>
+
+<video width="1024" height="600" controls=controls>
+  <source src="img/inside-out.mp4" type="video/mp4">
+</video>
+
+</section>
+
+<section data-markdown><script type="text/template">
+## I started to see the way I did
+</script></section>
+
+<section data-markdown><script type="text/template">
+## before I could code
+</script></section>
+
+<section data-markdown><script type="text/template">
+## and I knew what my tools
+</script></section>
+
+<section data-markdown><script type="text/template">
+## wouldn't let me do
+</script></section>
+
+<section data-markdown ><script type="text/template">
+# Thanks
 
 ### [@timruffles](http://twitter.com/timruffles)
 </script></section>
 
-<section data-markdown ><script type="text/template">
-
-## Creative commons work
-
-
-</script></section>
 
 
 </div>
 </div>
 
+<!-- demo code -->
 <script src="js/jquery.js"></script>
+<script src="angular.js"></script>
+<script src="d3.js"></script>
+<script src="demo.js"></script>
+<script src="DonutChartCtrl.js"></script>
 
 <!-- reveal -->
 <script src="reveal/lib/js/head.min.js"></script>
+<script src="reveal/plugin/highlight/highlight.js"></script>
+<script src="reveal/plugin/markdown/marked.js"></script>
 <script src="reveal/js/reveal.min.js"></script>
-<script>
-  Reveal.initialize({
-
-    // Display controls in the bottom right corner
-    controls: false,
-
-    // Display a presentation progress bar
-    progress: true,
-
-    // Push each slide change to the browser history
-    history: true,
-
-    // Enable keyboard shortcuts for navigation
-    keyboard: true,
-
-    // Enable the slide overview mode
-    overview: true,
-
-    // Vertical centering of slides
-    center: false,
-
-    // Loop the presentation
-    loop: false,
-
-    // Change the presentation direction to be RTL
-    rtl: false,
-
-    // Number of milliseconds between automatically proceeding to the
-    // next slide, disabled when set to 0, this value can be overwritten
-    // by using a data-autoslide attribute on your slides
-    autoSlide: 0,
-
-    // Enable slide navigation via mouse wheel
-    mouseWheel: false,
-
-    // Apply a 3D roll to links on hover
-    rollingLinks: false,
-
-    // Transition style
-    transition: 'linear', // default/cube/page/concave/zoom/linear/fade/none
-
-    dependencies: [
-        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
-        { src: 'reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-
-        // Interreveal/pret Markdown in <section> elements
-    { src: 'reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-    { src: 'reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); }, callback: function() { baconDemo() } },
-
-        // Syntareveal/x highlight for <code> elements
-          { src: 'reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-
-          // Zoom reveal/in and out with Alt+click
-          { src: 'reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-
-          // Speakreveal/er notes
-          { src: 'reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-
-          // Remotreveal/e control your reveal.js presentation using a touch device
-          // { src: 'reveal/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-          ]
-
-          });
-    </script>
+<script src="revealConfig.js"></script>
 </body>
 
