@@ -4,6 +4,7 @@ var apps = 0;
 
 d3.selection.prototype.angularise = function(opts) {
    opts = opts || {};
+   opts.locals = opts.locals || {};
 
    console.log(this.size());
    
@@ -16,9 +17,13 @@ d3.selection.prototype.angularise = function(opts) {
      apps += 1;
      var moduleName = "invocation-" + apps;
 
-     angular.module(moduleName, [])
+     var launchModule = angular.module(moduleName, [])
      .value("$data", d)
      .run(launch)
+
+     angular.forEach(opts.locals, function(value, name) {
+       launchModule.value(name, value);       
+     })
 
      modules.push(moduleName);
    
