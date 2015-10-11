@@ -19,6 +19,19 @@ d3.selectAll(".demo")
 
 function DemoCtrl(
   $data
+  , $scope
 ) {
-  this.name = $data.name; 
+  var self = this;
+
+  this.name = $data.name;
+  this.lastDigest;
+  this.totalDigests = 0;
+
+  $scope.$watch(function() {
+    setTimeout(function() {
+      self.lastDigest = Date.now();
+      self.totalDigests += 1;
+    });
+  })
+
 }

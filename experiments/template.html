@@ -1,3 +1,10 @@
 <div ng-controller="DemoCtrl as ctrl">
   <h1>Booted '{{ ctrl.name }}'</h1> 
+  <dl>
+    <dt>Last digest</dt><dd>{{ ctrl.lastDigest | date:"shortTime" }}</dd>
+    <dt>Total digests</dt><dd>{{ ctrl.totalDigests }}</dd>
+  </dl>
+  <button ng-click='justForDigest'>
+    $digest
+  </button>
 </div>
