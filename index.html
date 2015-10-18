@@ -10,11 +10,11 @@
   <link rel="stylesheet" href="slides-theme/style.css">
   <link rel="stylesheet" href="slides-theme/talk-specific.css">
 
+  <!-- demos -->
+  <link rel="stylesheet" href="js/d3-contexts-explained.css">
+
   <!-- for live coding -->
   <link rel="stylesheet" href="js/little-console.css" id="theme">
-
-
-  <link rel="stylesheet" href="visualisations/d3-contexts-explained.css" type="text/css" media="screen" charset="utf-8">
 
   <script type="text/javascript">
 
@@ -180,8 +180,44 @@ d3.selectAll(&quot;h3&quot;)
 </ul>
 </section>
 
-<section  class=""><h2 id="el-consistency-vital-for-animation">El consistency vital for animation</h2>
-<p><div id=comparisons></div></p>
+<section  class=""><h2 id="example">Example</h2>
+<ul>
+<li>by default, just <code>{ return index }</code></li>
+</ul>
+</section>
+
+<section  class=""><h2 id="contexts-explained">Contexts explained</h2>
+<div class=contexts-explained>
+
+  <div class=situation>
+    <h2>Selection</h2>
+    <h3>Elements</h3>
+    <div class='elements track'></div>
+    <button class=addEl>Add element</button>
+    <button class=delEl>Remove element</button>
+    <h3 class=code>.data()</h3>
+    <div class='data track'></div>
+    <button class=addData>Add data</button>
+    <button class=delData>Remove data</button>
+  </div>
+
+  <div class=contexts>
+    <h2>d3 Contexts</h2>
+    <div>
+      <h3 class=code>enter()</h3>
+      <div class='enter track'></div>
+    </div>
+    <div>
+      <h3>Update</h3>
+      <div class='update track'></div>
+    </div>
+    <div>
+      <h3 class=code>exit()</h3>
+      <div class='exit track'></div>
+    </div>
+  </div>
+
+<p></div></p>
 </section>
 
 <section data-state='title' class=""><h2 id="collaboration">Collaboration</h2>
@@ -360,6 +396,9 @@ d3.selectAll(&quot;h3&quot;)
 <script src="reveal/plugin/highlight/highlight.js"></script>
 <script src="reveal/js/reveal.min.js"></script>
 <script src="js/revealConfig.js"></script>
+
+<!-- demos -->
+<script src=js/d3-contexts-explained.js></script>
 
 <!-- live coding -->
 <script src=js/little-console.js></script>

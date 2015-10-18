@@ -89,6 +89,45 @@ d3.selectAll("h3")
 
 - by default, just `{ return index }`
 
-## El consistency vital for animation
+## Example
 
-<div id=comparisons></div>
+- by default, just `{ return index }`
+
+
+## Contexts explained
+
+<div class=contexts-explained>
+
+  <div class=situation>
+    <h2>Selection</h2>
+    <h3>Elements</h3>
+    <div class='elements track'></div>
+    <button class=addEl>Add element</button>
+    <button class=delEl>Remove element</button>
+    <h3 class=code>.data()</h3>
+    <div class='data track'></div>
+    <button class=addData>Add data</button>
+    <button class=delData>Remove data</button>
+  </div>
+
+  <div class=contexts>
+    <h2>d3 Contexts</h2>
+    <div>
+      <h3 class=code>enter()</h3>
+      <div class='enter track'></div>
+    </div>
+    <div>
+      <h3>Update</h3>
+      <div class='update track'></div>
+    </div>
+    <div>
+      <h3 class=code>exit()</h3>
+      <div class='exit track'></div>
+    </div>
+  </div>
+
+</div>
+
+
+
+

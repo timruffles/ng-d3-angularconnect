@@ -1,13 +1,15 @@
 (function() {
-
-window.explainContexts = main;
+"use strict";
 
 var elements = [1,2];
 var data = [1,2,3,4];
+var rawEl;
+
+main(document.querySelector(".contexts-explained"));
+
+return;
 
 function I(x) { return "x" }
-
-var rawEl;
 
 function main(element) {
   rawEl = element;
