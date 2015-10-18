@@ -1,3 +1,6 @@
+/**
+ * demo using d3, d3.angularise()
+ */
 angular.module("demo", [])
 .controller("DemoCtrl", DemoCtrl)
 .directive("integerValue", function() {
@@ -74,12 +77,17 @@ function main() {
     })
     .attr("y", r/2)
     .append("xhtml:body")
-    .angularise({
-      locals: {
-        $render: render,
-      },
-      templateUrl: "/template.html",
-      modules: ["demo"],
+    .angularise(function(d, i) {
+      return {
+        locals: {
+          $render: render,
+        },
+        templateUrl: "/template.html",
+        injector: "demo" + i,
+        controller: DemoCtrl,
+        controllerAs: "ctrl",
+        modules: ["demo"],
+      }
     })
   }
 
@@ -100,6 +108,7 @@ function DemoCtrl(
   this.name = $data.name;
   this.lastDigest;
   this.totalDigests = 0;
+  
   this.data = $data;
 
   this.updated = function() {

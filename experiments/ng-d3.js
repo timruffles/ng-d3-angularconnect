@@ -1,57 +1,60 @@
 (function() {
 
-var apps = 0;
+var injectors = {};
 
-d3.selection.prototype.angularise = function(opts) {
-   opts = opts || {};
-   opts.locals = opts.locals || {};
-
-   console.log(this.size());
-   
+d3.selection.prototype.angularise = function(fn) {
    this.each(function(d, i) {
      var el = this;
-     var modules = (opts.modules || []).slice();
-     console.log("each", i, d.name);
+     var opts = fn.call(el, d, i);
+
+     opts = opts || {};
+     var localServices = {
+       $element: angular.element(el),
+       $data: d,
+       $index: i,
+     };
+
+     for(var p in opts.locals) {
+       localServices[p] = opts.locals[p];
+     }
+
+     var modules = ["ng"].concat((opts.modules || []).slice());
      
+     console.log("each", i, d.name, modules);
 
-     apps += 1;
-     var moduleName = "invocation-" + apps;
+     opts.injector = opts.injector || "default";
+     var injector = injectors[opts.injector] || (injectors[opts.injector] = angular.injector(modules));
 
-     var launchModule = angular.module(moduleName, [])
-     .value("$data", d)
-     .run(launch)
-
-     angular.forEach(opts.locals, function(value, name) {
-       launchModule.value(name, value);       
-     })
-
-     modules.push(moduleName);
-   
-     angular.bootstrap(el, modules);
-     console.log("post bootstrap", d.name);
+     injector.invoke(launch);
      
-
      function launch(
        $compile
        , $templateRequest
        , $q
        , $rootScope
-       , $data
+       , $controller
      ) {
        console.log("launched!");
+
        getTemplate()
        .then(function(compileTarget) {
 
-         console.log("got tpl", compileTarget, $data);
-         
-         if(compileTarget === "skip") {
-           return;
+         var link = $compile(compileTarget);
+         var scope = $rootScope.$new();
+
+         if(compileTarget instanceof Element) {
+           link(scope);
+         } else {
+           link(scope, function(compiled) {
+             angular.element(el).append(compiled);
+           });
          }
 
-         var link = $compile(compileTarget);
-         link($rootScope, function(compiled) {
-           angular.element(el).append(compiled);
-         });
+         if(opts.controller) {
+           localServices.$scope = scope;
+           var ctrl = $controller(opts.controller, localServices);
+           scope[opts.controllerAs] = ctrl;
+         }
        });
        
        function getTemplate() {
@@ -60,7 +63,7 @@ d3.selection.prototype.angularise = function(opts) {
          } else if (opts.templateUrl) {
            return $templateRequest(opts.templateUrl)
          } else {
-           return $q.when("skip");
+           return $q.when(el);
          }
        }
      }

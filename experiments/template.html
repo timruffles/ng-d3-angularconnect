@@ -1,13 +1,11 @@
-<div ng-controller="DemoCtrl as ctrl">
-  <h1>Booted '{{ ctrl.name }}'</h1> 
-  <h2>Digest count: {{ ctrl.totalDigests }}</h2>
-  <form name='dataForm'>
-    <input type="range" 
-           name="data"
-           ng-model="ctrl.data.value"
-           ng-change='ctrl.updated()'
-           integer-value
-           >
-    {{ ctrl.data.value }}
-  </form>
-</div>
+<h1>Booted '{{ ctrl.name }}'</h1> 
+<h2>Digest count: {{ ctrl.totalDigests }}</h2>
+<form name='dataForm'>
+  <input type="range" 
+         name="data"
+         ng-model="ctrl.data.value"
+         ng-change='ctrl.updated()'
+         integer-value
+         >
+  {{ ctrl.data.value }}
+</form>
