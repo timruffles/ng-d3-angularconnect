@@ -1,12 +1,33 @@
 ## d3 ≃ jQuery + data
 {tags:{state:"title"}}
 
-stuff
 
 ## jQuery-ish
 
 - select elements
 - work with that selection via chaining API
+
+## e.g
+{class: "notitle"}
+
+
+<script type=eg code-sample>
+  <svg id=circle width=600 height=220>
+  </svg>
+
+  <code>
+    d3.select("#circle")
+    .append("circle")
+    .attr({
+      r: 100,
+      cx: 300,
+      cy: 100,
+      fill: "cadetblue",
+    });
+  </code>
+</script>
+
+## Live
 
 <section>
 <script type=code-example-alongside>
@@ -95,6 +116,7 @@ d3.selectAll("h3")
 
 
 ## Contexts explained
+{class:"notitle", todo: "remove title"}
 
 <div class=contexts-explained>
 
@@ -128,6 +150,21 @@ d3.selectAll("h3")
 
 </div>
 
+
+## Big idea: idempotency
+
+- d3 rendering keeps data and screen in sync
+
+## Rendering just a function
+
+```
+render(elements0, data1) // elements1
+render(elements1, data1) // elements1
+
+render(elements1, data2) // elements2
+
+render(elements2, data1) // elements1
+```
 
 
 

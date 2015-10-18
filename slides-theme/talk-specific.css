@@ -24,3 +24,7 @@
 .login, .logout {
   font-size: 1em !important;
 }
+
+.notitle h2 {
+  display: none;
+}

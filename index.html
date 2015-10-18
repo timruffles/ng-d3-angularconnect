@@ -84,7 +84,6 @@
 </section>
 
 <section data-state='title' class=""><h2 id="d3-jquery-data">d3 ≃ jQuery + data</h2>
-<p>stuff</p>
 </section>
 
 <section  class=""><h2 id="jquery-ish">jQuery-ish</h2>
@@ -92,6 +91,28 @@
 <li>select elements</li>
 <li>work with that selection via chaining API</li>
 </ul>
+</section>
+
+<section  class="notitle"><h2 id="e-g">e.g</h2>
+<script type=eg code-sample>
+  <svg id=circle width=600 height=220>
+  </svg>
+
+  <code>
+    d3.select(&quot;#circle&quot;)
+    .append(&quot;circle&quot;)
+    .attr({
+      r: 100,
+      cx: 300,
+      cy: 100,
+      fill: &quot;cadetblue&quot;,
+    });
+  </code>
+</script>
+
+</section>
+
+<section  class=""><h2 id="live">Live</h2>
 <section>
 <script type=code-example-alongside>
   <div id=familiar>
@@ -186,7 +207,7 @@ d3.selectAll(&quot;h3&quot;)
 </ul>
 </section>
 
-<section  class=""><h2 id="contexts-explained">Contexts explained</h2>
+<section  class="notitle"><h2 id="contexts-explained">Contexts explained</h2>
 <div class=contexts-explained>
 
   <div class=situation>
@@ -218,6 +239,19 @@ d3.selectAll(&quot;h3&quot;)
   </div>
 
 <p></div></p>
+</section>
+
+<section  class=""><h2 id="big-idea-idempotency">Big idea: idempotency</h2>
+<ul>
+<li>d3 rendering keeps data and screen in sync</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="rendering-just-a-function">Rendering just a function</h2>
+<p><code>render(elements0, data1) // elements1
+render(elements1, data1) // elements1&lt;/p&gt;
+&lt;p&gt;render(elements1, data2) // elements2&lt;/p&gt;
+&lt;p&gt;render(elements2, data1) // elements1</code></p>
 </section>
 
 <section data-state='title' class=""><h2 id="collaboration">Collaboration</h2>

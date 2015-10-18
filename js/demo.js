@@ -22,47 +22,42 @@ function getApp() {
    * code from there and turns in into a live code example
    */
   app.directive("codeSample",function($compile) {
-    var tpl = "<div class=code-sample><div class='target'></div><pre><code>{{ code }}</code></pre><pre><code class=controller ng-show='controllerCode != null'>{{controllerCode}}</code></pre></div>";
+    var tpl = "<div class=code-sample><div class='target'></div><pre><code>{{ code }}</code></pre><pre><code class=javascript ng-show='javascriptCode != null'>{{javascriptCode}}</code></pre></div>";
+
     var samples = 0;
     var $ = angular.element
     return {
       scope: {},
+      restrict: "A",
       compile: function(el,attr) {
         var parsed = $("<div>" + el.html() + "</div>")
-        var controller = angular.element(parsed[0].querySelector('.controller')).remove()
+        var javascript = angular.element(parsed[0].querySelector('code')).remove()
         var code = parsed.html().replace(/&quot;/g,'"')
         code = formatLines(code)
 
         return function(scope, $element, attr) {
           scope.code = code
 
-          if(controller.length > 0) {
-            var controllerCode = controller.html()
-            scope.controllerCode = formatLines(controllerCode)
-            var name = "demo" + (samples++);
-  console.log(controllerCode);
-            var fn = new Function("module", controllerCode);
-            var moduleProxy = {
-              controller: function(name, def) {
-                controllerProvider.register(name, def);
-                return moduleProxy;
-              },
-              directive: function(name, def) {
-                compileProvider.directive(name, def);
-                return moduleProxy;
-              },
-            }
-            fn(moduleProxy);
-          } 
-
           var templateLink = $compile(tpl);
           var contentLink = $compile(parsed)
           var tplEl = templateLink(scope)
           var contentEl = contentLink(scope)
+
+          // need to replace the script tag
           var parent = $element.parent()
           $element.replaceWith(tplEl);
           var p = parent[0]
+
           angular.element(p.querySelector('.target')).replaceWith(contentEl)
+
+          // run JS code after DOM is available
+          if(javascript.length > 0) {
+            var javascriptCode = javascript.html()
+            scope.javascriptCode = formatLines(javascriptCode)
+            var name = "demo" + (samples++);
+            var fn = new Function(javascriptCode);
+            fn();
+          } 
 
           waitForDom(function() {
             ;[].forEach.call(tplEl[0].querySelectorAll("code"), function(el) {

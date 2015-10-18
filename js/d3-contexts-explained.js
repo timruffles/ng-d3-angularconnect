@@ -1,3 +1,6 @@
+/**
+ * quick visual demo of d3's grouping, using d3
+ */
 (function() {
 "use strict";
 
@@ -70,6 +73,7 @@ function draw() {
 
  buttons(rawEl.querySelector(".situation"));
 }
+
 function buttons(el) {
   var btns = {
     El: {
@@ -88,6 +92,7 @@ function buttons(el) {
     });
   });
 }
+
 function addEls(sel) {
   d3.select(sel)
     .selectAll(".item")
@@ -96,18 +101,22 @@ function addEls(sel) {
     .append("span")
     .attr("class","item hidden");
 }
+
 function addElement() {
   elements.push(1);
   draw();
 }
+
 function addData() {
   data.push(1);
   draw();
 }
+
 function removeElement() {
   elements.shift();
   draw();
 }
+
 function removeData() {
   data.shift();
   draw();
