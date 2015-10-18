@@ -280,13 +280,12 @@ render(elements1, data1) // elements1&lt;/p&gt;
 </section>
 
 <section  class=""><h2 id="-bar-chart-"><code>&lt;bar-chart&gt;</code></h2>
-<p><code>html&lt;/p&gt;
-&lt;p&gt;&lt;bar-chart
+<pre><code>&lt;bar-chart
   series=&quot;ctrl.series&quot;
   y-scale=&quot;ctrl.yScale&quot;
   &gt;
-&lt;/bar-chart&gt;</code></p>
-</section>
+&lt;/bar-chart&gt;
+</code></pre></section>
 
 <section  class=""><h2 id="ok-for-completely-generic-bits">Ok for completely generic bits</h2>
 </section>
@@ -326,25 +325,27 @@ render(elements1, data1) // elements1&lt;/p&gt;
 </section>
 
 <section  class=""><h2 id="attribute-directives">Attribute directives</h2>
-<p><code>html&lt;/p&gt;
-&lt;p&gt;&amp;lt;svg
-  bar-chart=&amp;#39;{
+<pre><code>&lt;svg
+
+  bar-chart=&#39;{
     data: ctrl.data,
-  }&amp;#39;&lt;/p&gt;
-&lt;p&gt;  line-graph=&amp;#39;{
+  }&#39;
+
+  line-graph=&#39;{
     data: ctrl.data,
-  }&amp;#39;
-  &amp;gt;
-&lt;/svg&gt;</code></p>
-</section>
+  }&#39;
+  &gt;
+&lt;/svg&gt;
+</code></pre></section>
 
 <section data-state='good' class=""><h2 id="can-share-">Can share!</h2>
-<p><code>html&lt;/p&gt;
-&lt;p&gt;&lt;svg bar-chart line-graph&gt;
-  &lt;g class=&#39;some-data&#39;&gt;
-  &lt;/g&gt;
-&lt;/svg&gt;</code></p>
-</section>
+<p>DOM nodes accessible to all directives</p>
+<pre><code>&lt;svg bar-chart line-graph&gt;
+  &lt;g class=&#39;some-data&#39;&gt;&lt;/g&gt;
+  &lt;g class=&#39;some-data&#39;&gt;&lt;/g&gt;
+  &lt;g class=&#39;some-data&#39;&gt;&lt;/g&gt;
+&lt;/svg&gt;
+</code></pre></section>
 
 <section data-state='bad' class=""><h2 id="but-">But..</h2>
 </section>

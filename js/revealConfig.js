@@ -72,14 +72,15 @@ Reveal.initialize({
 });
 
 Reveal.addEventListener('ready', function( event ) {
-  angular.injector(["ng"]).invoke(function($q) {
-    // ensure code examples don't get bound (i.e stop '{{' interpolation)
-    ;[].forEach.call(document.querySelectorAll("pre code"), function(el) {
-      el.setAttribute("ng-non-bindable", true);
-    });
 
-    angular.bootstrap(document.body, ["slides"]);
-  })
+  // ensure code examples don't get bound (i.e stop '{{' interpolation)
+  ;[].forEach.call(document.querySelectorAll("pre code"), function(el) {
+    el.setAttribute("ng-non-bindable", true);
+    hljs.highlightBlock(el);
+  });
+
+  angular.bootstrap(document.body, ["slides"]);
+
 });
   
 })();

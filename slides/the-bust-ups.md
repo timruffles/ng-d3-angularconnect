@@ -19,13 +19,11 @@ Not `<div class='profile'>`, but `<profile>`
 
 ## `<bar-chart>`
 
-```html
-<bar-chart
-  series="ctrl.series"
-  y-scale="ctrl.yScale"
-  >
-</bar-chart>
-```
+    <bar-chart
+      series="ctrl.series"
+      y-scale="ctrl.yScale"
+      >
+    </bar-chart>
 
 ## Ok for completely generic bits
 
@@ -58,28 +56,28 @@ Not `<div class='profile'>`, but `<profile>`
 
 ## Attribute directives
 
-```html
-<svg
-  bar-chart='{
-    data: ctrl.data,
-  }'
+    <svg
 
-  line-graph='{
-    data: ctrl.data,
-  }'
-  >
-</svg>
-```
+      bar-chart='{
+        data: ctrl.data,
+      }'
+
+      line-graph='{
+        data: ctrl.data,
+      }'
+      >
+    </svg>
 
 ## Can share!
 {tags:{state:"good"}}
 
-```html
-<svg bar-chart line-graph>
-  <g class='some-data'>
-  </g>
-</svg>
-```
+DOM nodes accessible to all directives
+
+    <svg bar-chart line-graph>
+      <g class='some-data'></g>
+      <g class='some-data'></g>
+      <g class='some-data'></g>
+    </svg>
 
 ## But..
 {tags:{state:"bad"}}
