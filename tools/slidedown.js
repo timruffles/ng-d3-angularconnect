@@ -45,7 +45,12 @@ exports.parse = function(source) {
       const body = [heading].concat(takeUntil({ type: "heading", depth: 2 }));
       body.links = components.links;
 
-      const html = marked.Parser.parse(body);
+      let html;
+      try {
+        html = marked.Parser.parse(body);
+      } catch(e) {
+        throw new Error(`couldn't parse slide '${heading.text}': ` + JSON.stringify(body, null, 4));
+      }
       const tags = _.map(metaData.tags, (v, k) => `data-${k}='${v}'`);
 
       const slideHtml = `<section ${tags} class="${metaData.class}">${html}</section>`;
@@ -57,7 +62,7 @@ exports.parse = function(source) {
 
       if(node) {
         try {
-          var data = JSON.parse(node.text);
+          var data = eval("(" + node.text + ")");
         } catch(e) {
           return false;
         }

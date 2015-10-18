@@ -5,8 +5,3 @@
 
 timr.co
 
-## Testing
-
-```
-someCode();
-```

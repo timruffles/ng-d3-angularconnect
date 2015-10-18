@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="slides-theme/talk-specific.css">
 
   <!-- for live coding -->
-  <link rel="stylesheet" href="slides-theme/js/little-console.css" id="theme">
+  <link rel="stylesheet" href="js/little-console.css" id="theme">
 
 
   <link rel="stylesheet" href="visualisations/d3-contexts-explained.css" type="text/css" media="screen" charset="utf-8">
@@ -41,8 +41,308 @@
 <p>timr.co</p>
 </section>
 
-<section  class=""><h2 id="testing">Testing</h2>
-<p><code>someCode();</code></p>
+<section data-state='title' class=""><h2 id="a-tough-year">A tough year</h2>
+</section>
+
+<section  class=""><h2 id="strange-bed-fellows">Strange bed-fellows</h2>
+</section>
+
+<section  class=""><h2 id="a-mutual-friend-and-a-new-face">A mutual friend, and a new face</h2>
+</section>
+
+<section data-state='title' class=""><h2 id="our-friend-ng-">Our friend <code>ng</code></h2>
+</section>
+
+<section  class=""><h2 id="a-person-of-heft">A person of heft</h2>
+</section>
+
+<section  class=""><h2 id="smart">Smart</h2>
+</section>
+
+<section  class=""><h2 id="big-ideas">Big ideas</h2>
+</section>
+
+<section  class="undefined"><h2 id="visionary">Visionary</h2>
+</section>
+
+<section data-state='title' class=""><h2 id="d3">D3</h2>
+</section>
+
+<section  class=""><h2 id="niche">Niche</h2>
+</section>
+
+<section  class=""><h2 id="-just-a-library-">&#39;Just a library&#39;</h2>
+</section>
+
+<section  class=""><h2 id="but-">But...</h2>
+</section>
+
+<section  class=""><h2 id="has-some-big-ideas-too">Has some big ideas too</h2>
+</section>
+
+<section  class=""><h2 id="perhaps-as-big-as-angular-s">Perhaps as big as Angular&#39;s</h2>
+</section>
+
+<section data-state='title' class=""><h2 id="d3-jquery-data">d3 ≃ jQuery + data</h2>
+<p>stuff</p>
+</section>
+
+<section  class=""><h2 id="jquery-ish">jQuery-ish</h2>
+<ul>
+<li>select elements</li>
+<li>work with that selection via chaining API</li>
+</ul>
+<section>
+<script type=code-example-alongside>
+  <div id=familiar>
+    <h3>Hi</h3>
+    <a>jQuery</a>
+    <a>MDN docs</a>
+  </div>
+</script>
+<div class=little-console></div>
+<script type=cheat>
+  d3.selectAll(&quot;#familiar a&quot;).attr(&quot;href&quot;,&quot;<a href="http://google.com">http://google.com</a>&quot;);
+</script>
+</section>
+
+</section>
+
+<section data-state='subtitle' class=""><h2 id="one-callback-turns-jq-into-d3">One callback turns jQ into D3</h2>
+</section>
+
+<section  class=""><h2 id="d3-s-callback">D3&#39;s callback</h2>
+<p><code>javascript
+d3.selectAll(&quot;.bars&quot;)
+.style(&quot;background&quot;,function(dataForElement,indexOfData) {
+  return dataForElement.alert ? &quot;red&quot; : &quot;green&quot;;
+});</code></p>
+</section>
+
+<section  class=""><h2 id="-data-"><code>(data,...) {</code></h2>
+<ul>
+<li>the data for an element</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="-index-"><code>(...,index) {</code></h2>
+<ul>
+<li>where that data sits within the current data-set (order)</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="the-bridge-el-data">The bridge, el -&gt; data</h2>
+<p><code>javascript
+function(data,index) {
+  // return value from data + index
+}</code></p>
+<p><code>javascript
+d3.select(&quot;#root&quot;)
+  .selectAll(&quot;h3&quot;)
+  .text(function(d) {
+    return d.title;
+  });</code></p>
+</section>
+
+<section  class=""><h2 id="-and-where-does-the-data-come-from-">...and where does the data come from?</h2>
+</section>
+
+<section  class=""><h2 id="-data-"><code>data()</code></h2>
+<p><code>javascript
+// make a selection, then call data()
+d3.selectAll(&quot;h3&quot;)
+  .data([
+    {title: &quot;jQuery&quot;},
+    {title: &quot;D3&quot;}
+  ])
+  // now data can be related one-to-one with elements</code></p>
+</section>
+
+<section  class=""><h2 id="driving-the-document-with-data">Driving the document with data</h2>
+<script type=code-example-alongside>
+  <h3 class=drive-me></h3>
+  <h3 class=drive-me></h3>
+</script>
+<div class=little-console></div>
+
+<script type=cheat>
+  d3.selectAll(&quot;.drive-me&quot;).data([{title:&quot;hi&quot;},{title:&quot;jquery&quot;}]).text(function(d) { return d.title })
+</script>
+
+</section>
+
+<section  class=""><h2 id="datums-elements-via-key-function">Datums -&gt; elements via key function</h2>
+</section>
+
+<section  class=""><h2 id="-d-i-return-d-id-"><code>ƒ(d,i) { return d.id }</code></h2>
+<ul>
+<li>by default, just <code>{ return index }</code></li>
+</ul>
+</section>
+
+<section  class=""><h2 id="el-consistency-vital-for-animation">El consistency vital for animation</h2>
+<p><div id=comparisons></div></p>
+</section>
+
+<section data-state='title' class=""><h2 id="collaboration">Collaboration</h2>
+</section>
+
+<section  class=""><h2 id="attempt-1">Attempt 1</h2>
+</section>
+
+<section  class=""><h2 id="best-practice">Best practice</h2>
+</section>
+
+<section  class=""><h2 id="-ng-view-concerns-live-in-"><code>ng</code> view concerns live in?</h2>
+</section>
+
+<section  class=""><h2 id="-directives-"><code>&lt;directives&gt;</code></h2>
+</section>
+
+<section  class=""><h2 id="making-html-a-language-fit-for-your-app">Making HTML a language fit for your app</h2>
+<p>Not <code>&lt;div class=&#39;profile&#39;&gt;</code>, but <code>&lt;profile&gt;</code></p>
+</section>
+
+<section  class=""><h2 id="one-directive-per-chart">One directive per chart</h2>
+</section>
+
+<section  class=""><h2 id="approach-lots-of-libraries-have-taken">Approach lots of libraries have taken</h2>
+</section>
+
+<section  class=""><h2 id="-bar-chart-"><code>&lt;bar-chart&gt;</code></h2>
+<p><code>html&lt;/p&gt;
+&lt;p&gt;&lt;bar-chart
+  series=&quot;ctrl.series&quot;
+  y-scale=&quot;ctrl.yScale&quot;
+  &gt;
+&lt;/bar-chart&gt;</code></p>
+</section>
+
+<section  class=""><h2 id="ok-for-completely-generic-bits">Ok for completely generic bits</h2>
+</section>
+
+<section  class=""><h2 id="e-g-sparklines">e.g sparklines</h2>
+</section>
+
+<section data-state='bad' class=""><h2 id="but-">But...</h2>
+</section>
+
+<section  class=""><h2 id="we-had-more-ambition">We had more ambition</h2>
+</section>
+
+<section  class=""><h2 id="moving-data-between-charts">Moving data between charts</h2>
+</section>
+
+<section  class=""><h2 id="element-consistency">Element consistency</h2>
+</section>
+
+<section data-state='bad' class=""><h2 id="first-clash">First clash</h2>
+</section>
+
+<section  class=""><h2 id="the-selfishness-of-components-">The selfishness of <code>&lt;components&gt;</code></h2>
+</section>
+
+<section  class=""><h2 id="-components-won-t-share-their-dom"><code>&lt;components&gt;</code> won&#39;t share their DOM</h2>
+</section>
+
+<section  class=""><h2 id="no-overlapping-behaviours">No overlapping behaviours</h2>
+<p><img src="img/oo.png" alt="overlap"></p>
+</section>
+
+<section data-state='subtitle' class=""><h2 id="attempt-2">Attempt 2</h2>
+</section>
+
+<section  class=""><h2 id="stacking-attributes">Stacking attributes</h2>
+</section>
+
+<section  class=""><h2 id="attribute-directives">Attribute directives</h2>
+<p><code>html&lt;/p&gt;
+&lt;p&gt;&amp;lt;svg
+  bar-chart=&amp;#39;{
+    data: ctrl.data,
+  }&amp;#39;&lt;/p&gt;
+&lt;p&gt;  line-graph=&amp;#39;{
+    data: ctrl.data,
+  }&amp;#39;
+  &amp;gt;
+&lt;/svg&gt;</code></p>
+</section>
+
+<section data-state='good' class=""><h2 id="can-share-">Can share!</h2>
+<p><code>html&lt;/p&gt;
+&lt;p&gt;&lt;svg bar-chart line-graph&gt;
+  &lt;g class=&#39;some-data&#39;&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</code></p>
+</section>
+
+<section data-state='bad' class=""><h2 id="but-">But..</h2>
+</section>
+
+<section  class=""><h2 id="no-isolate-">No isolate...</h2>
+</section>
+
+<section  class=""><h2 id="not-idiomatic">Not idiomatic</h2>
+</section>
+
+<section  class=""><h2 id="loses-d3-s-insane-composability">Loses D3&#39;s insane composability</h2>
+</section>
+
+<section data-state='subtitle' class=""><h2 id="attempt-3">Attempt 3</h2>
+</section>
+
+<section  class=""><h2 id="take-a-step-back">Take a step back</h2>
+</section>
+
+<section  class=""><h2 id="why-declarative-">Why declarative?</h2>
+</section>
+
+<section  class=""><h2 id="break-apart-concerns">Break apart concerns</h2>
+</section>
+
+<section  class=""><h2 id="angular-holds-state">Angular holds state</h2>
+</section>
+
+<section  class=""><h2 id="d3-renders">D3 renders</h2>
+</section>
+
+<section data-state='bad' class=""><h2 id="but-">But...</h2>
+</section>
+
+<section  class=""><h2 id="i-had-a-moment-of-doubt">I had a moment of doubt</h2>
+</section>
+
+<section  class=""><h2 id="why-do-all-the-apps-i-build-look-the-same-">Why do all the apps I build look the same?</h2>
+</section>
+
+<section  class=""><h2 id="why-did-people-new-to-d3-ng-build-cooler-stuff-than-me-">Why did people new to D3 + ng build cooler stuff than me?</h2>
+</section>
+
+<section  class=""><h2 id="maybe-there-was-something-wrong-with-me">Maybe there was something wrong with me</h2>
+</section>
+
+<section  class=""><h2 id="maybe-i-had-been-indoctrinated">Maybe I had been indoctrinated</h2>
+</section>
+
+<section  class=""><h2 id="then-i-realised">Then I realised</h2>
+</section>
+
+<section  class=""><h2 id="i-had-developed">I had developed</h2>
+</section>
+
+<section  class=""><h2 id="programmer-vision">Programmer vision</h2>
+</section>
+
+<section  class=""><h2 id="a-world-of-hierarchy">A world of hierarchy</h2>
+</section>
+
+<section  class=""><h2 id="-and-rules">...and rules</h2>
+</section>
+
+<section  class=""><h2 id="where-simple-things-were-impossible">Where simple things were impossible</h2>
+</section>
+
+<section  class=""><h2 id="-"> </h2>
 </section>
 
 </div>
@@ -62,5 +362,7 @@
 <script src="js/revealConfig.js"></script>
 
 <!-- live coding -->
+<script src=js/little-console.js></script>
+<script src=js/showConsoles.js></script>
 
 </body>
