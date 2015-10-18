@@ -38,7 +38,7 @@ exports.parse = function(source) {
       const metaNode = GRAMMAR.metaData();
 
       const metaData = _.defaults(metaNode || {}, {
-        classes: [],
+        class: "",
         tags: [],
       })
 
@@ -46,10 +46,9 @@ exports.parse = function(source) {
       body.links = components.links;
 
       const html = marked.Parser.parse(body);
-      const classes = metaData.classes.join(" ");
       const tags = _.map(metaData.tags, (v, k) => `data-${k}='${v}'`);
 
-      const slideHtml = `<section ${tags} class="${classes}">${html}</section>`;
+      const slideHtml = `<section ${tags} class="${metaData.class}">${html}</section>`;
 
       return { type: 'html', pre: false, text: slideHtml + '\n\n' };
     },
