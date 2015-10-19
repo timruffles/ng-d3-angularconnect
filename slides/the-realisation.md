@@ -1,16 +1,11 @@
 ## I had a moment of doubt
+{tags:{state:"bad"}}
 
 ## Why do all the apps I build look the same?
 
 ## Why did people new to D3 + ng build cooler stuff than me?
 
-## Maybe there was something wrong with me
-
-## Maybe I had been indoctrinated
-
-## Then I realised
-
-## I had developed
+## Something was wrong with me
 
 ## Programmer vision
 
@@ -20,7 +15,9 @@
 
 ## Where simple things were impossible
 
-## 
-{todo: "programmer vision"}
+## Where doing it the 'right way'
+
+## Was more important than doing it at all
+
 
 

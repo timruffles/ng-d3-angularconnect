@@ -41,104 +41,91 @@
 <p>timr.co</p>
 </section>
 
-<section data-state='title' class=""><h2 id="a-tough-year">A tough year</h2>
+<section data-state='title' class=""><h2 id="my-year">My year</h2>
 </section>
 
-<section  class=""><h2 id="strange-bed-fellows">Strange bed-fellows</h2>
+<section  class=""><h2 id="a-suprise">A suprise</h2>
+</section>
+
+<section  class=""><h2 id="you-built-what-">You built what?!</h2>
+<p><img src="img/transitions.gif" alt="transitions"></p>
+</section>
+
+<section  class=""><h2 id="i-said-yes">I said yes</h2>
+</section>
+
+<section  class=""><h2 id="i-wanted-to-build-cool-things">I wanted to build cool things</h2>
+<p><img src="img/transitions-b.gif" alt="transitions"></p>
+</section>
+
+<section  class=""><h2 id="cleaning-up-the-code-">Cleaning up the code...</h2>
+</section>
+
+<section  class=""><h2 id="a-tale-involving-two-characters">A tale involving two characters</h2>
 </section>
 
 <section  class=""><h2 id="a-mutual-friend-and-a-new-face">A mutual friend, and a new face</h2>
 </section>
 
 <section data-state='title' class=""><h2 id="our-friend-ng-">Our friend <code>ng</code></h2>
+<p><img class='offset' src="img/ng.png" alt="angular js shield logo"></p>
 </section>
 
-<section  class=""><h2 id="a-person-of-heft">A person of heft</h2>
+<section  class=""><h2 id="hefty">Hefty</h2>
 </section>
 
-<section  class=""><h2 id="smart">Smart</h2>
-</section>
-
-<section  class=""><h2 id="big-ideas">Big ideas</h2>
-</section>
-
-<section  class="undefined"><h2 id="visionary">Visionary</h2>
+<section  class="undefined"><h2 id="big-ideas">Big ideas</h2>
 </section>
 
 <section data-state='title' class=""><h2 id="d3">D3</h2>
 </section>
 
-<section  class=""><h2 id="niche">Niche</h2>
-</section>
-
 <section  class=""><h2 id="-just-a-library-">&#39;Just a library&#39;</h2>
-</section>
-
-<section  class=""><h2 id="but-">But...</h2>
 </section>
 
 <section  class=""><h2 id="has-some-big-ideas-too">Has some big ideas too</h2>
 </section>
 
-<section  class=""><h2 id="perhaps-as-big-as-angular-s">Perhaps as big as Angular&#39;s</h2>
+<section data-state='title' class=""><h2 id="meet-d3">Meet d3</h2>
 </section>
 
-<section data-state='title' class=""><h2 id="d3-jquery-data">d3 ≃ jQuery + data</h2>
+<section  class=""><h2 id="d3-jquery-data">d3 ≃ jQuery + data</h2>
 </section>
 
 <section  class=""><h2 id="jquery-ish">jQuery-ish</h2>
 <ul>
 <li>select elements</li>
-<li>work with that selection via chaining API</li>
+<li>affect those elements via chaining API</li>
 </ul>
 </section>
 
 <section  class="notitle"><h2 id="e-g">e.g</h2>
 <script type=eg code-sample>
-  <svg id=circle width=600 height=220>
+  <svg id=meetD3 width=600 height=220>
+    <circle r=50 cx=300 cy=110 fill=black />
   </svg>
-
-  <code>
-    d3.select(&quot;#circle&quot;)
-    .append(&quot;circle&quot;)
-    .attr({
-      r: 100,
-      cx: 300,
-      cy: 100,
-      fill: &quot;cadetblue&quot;,
-    });
-  </code>
 </script>
 
-</section>
-
-<section  class=""><h2 id="live">Live</h2>
-<section>
-<script type=code-example-alongside>
-  <div id=familiar>
-    <h3>Hi</h3>
-    <a>jQuery</a>
-    <a>MDN docs</a>
-  </div>
-</script>
 <div class=little-console></div>
+
 <script type=cheat>
-  d3.selectAll(&quot;#familiar a&quot;).attr(&quot;href&quot;,&quot;<a href="http://google.com">http://google.com</a>&quot;);
+  d3.selectAll(&quot;#meetD3 circle&quot;).attr(&quot;fill&quot;, &quot;pink&quot;);
 </script>
-</section>
 
 </section>
 
-<section data-state='subtitle' class=""><h2 id="one-callback-turns-jq-into-d3">One callback turns jQ into D3</h2>
+<section  class=""><h2 id="nothing-new-so-far">Nothing new so far</h2>
+</section>
+
+<section data-state='subtitle' class=""><h2 id="one-callback-api-turns-jq-into-d3">One callback API turns jQ into D3</h2>
 </section>
 
 <section  class=""><h2 id="d3-s-callback">D3&#39;s callback</h2>
-<p><code>javascript
-d3.selectAll(&quot;.bars&quot;)
-.style(&quot;background&quot;,function(dataForElement,indexOfData) {
+<pre><code>d3.selectAll(&quot;.bars&quot;)
+.style(&quot;background&quot;,function(dataForElement) {
   return dataForElement.alert ? &quot;red&quot; : &quot;green&quot;;
-});</code></p>
-</section>
+});
+</code></pre></section>
 
 <section  class=""><h2 id="-data-"><code>(data,...) {</code></h2>
 <ul>
@@ -153,37 +140,38 @@ d3.selectAll(&quot;.bars&quot;)
 </section>
 
 <section  class=""><h2 id="the-bridge-el-data">The bridge, el -&gt; data</h2>
-<p><code>javascript
-function(data,index) {
+<pre><code>function(data,index) {
   // return value from data + index
-}</code></p>
-<p><code>javascript
-d3.select(&quot;#root&quot;)
+}
+</code></pre><pre><code>d3.select(&quot;#root&quot;)
   .selectAll(&quot;h3&quot;)
   .text(function(d) {
     return d.title;
-  });</code></p>
-</section>
+  });
+</code></pre></section>
 
 <section  class=""><h2 id="-and-where-does-the-data-come-from-">...and where does the data come from?</h2>
 </section>
 
 <section  class=""><h2 id="-data-"><code>data()</code></h2>
-<p><code>javascript
-// make a selection, then call data()
+<pre><code>// make a selection, then call data()
 d3.selectAll(&quot;h3&quot;)
   .data([
     {title: &quot;jQuery&quot;},
     {title: &quot;D3&quot;}
   ])
-  // now data can be related one-to-one with elements</code></p>
+  // now data can be related one-to-one with elements
+</code></pre></section>
+
+<section  class=""><h2 id="the-data-join-">The data-join!</h2>
 </section>
 
 <section  class=""><h2 id="driving-the-document-with-data">Driving the document with data</h2>
-<script type=code-example-alongside>
+<script type=eg code-sample>
   <h3 class=drive-me></h3>
   <h3 class=drive-me></h3>
 </script>
+
 <div class=little-console></div>
 
 <script type=cheat>
@@ -192,19 +180,19 @@ d3.selectAll(&quot;h3&quot;)
 
 </section>
 
-<section  class=""><h2 id="datums-elements-via-key-function">Datums -&gt; elements via key function</h2>
-</section>
-
-<section  class=""><h2 id="-d-i-return-d-id-"><code>ƒ(d,i) { return d.id }</code></h2>
+<section  class=""><h2 id="synchronising-data-and-screen">Synchronising data and screen</h2>
 <ul>
-<li>by default, just <code>{ return index }</code></li>
+<li>updating </li>
+<li>adding</li>
+<li>removing</li>
 </ul>
 </section>
 
-<section  class=""><h2 id="example">Example</h2>
-<ul>
-<li>by default, just <code>{ return index }</code></li>
-</ul>
+<section  class=""><h2 id="synchronising-data-and-elements">Synchronising data and elements</h2>
+<pre><code class="lang-javascript">var update = d3.selectAll(&#39;.x&#39;).data(data);
+var enter = update.enter();
+var exit = update.exit();
+</code></pre>
 </section>
 
 <section  class="notitle"><h2 id="contexts-explained">Contexts explained</h2>
@@ -229,7 +217,7 @@ d3.selectAll(&quot;h3&quot;)
       <div class='enter track'></div>
     </div>
     <div>
-      <h3>Update</h3>
+      <h3 class=code>update</h3>
       <div class='update track'></div>
     </div>
     <div>
@@ -241,23 +229,67 @@ d3.selectAll(&quot;h3&quot;)
 <p></div></p>
 </section>
 
-<section  class=""><h2 id="big-idea-idempotency">Big idea: idempotency</h2>
-<ul>
-<li>d3 rendering keeps data and screen in sync</li>
-</ul>
+<section data-state='subtitle' class=""><h2 id="big-idea">Big idea</h2>
 </section>
 
-<section  class=""><h2 id="rendering-just-a-function">Rendering just a function</h2>
-<p><code>render(elements0, data1) // elements1
-render(elements1, data1) // elements1&lt;/p&gt;
-&lt;p&gt;render(elements1, data2) // elements2&lt;/p&gt;
-&lt;p&gt;render(elements2, data1) // elements1</code></p>
+<section data-state='subtitle' class=""><h2 id="idempotency">Idempotency</h2>
 </section>
 
-<section data-state='title' class=""><h2 id="collaboration">Collaboration</h2>
+<section  class=""><h2 id="d3-components-functions-that-sync-dom-data-">d3 components = functions that sync <code>&lt;DOM&gt;</code> &amp; <code>{data}</code></h2>
 </section>
 
-<section  class=""><h2 id="attempt-1">Attempt 1</h2>
+<section  class=""><h2 id="components-are-just-a-function">Components are just a function</h2>
+<pre><code>render(elements0, data1) // elements1
+
+render(elements1, data1) // elements1
+
+render(elements1, data2) // elements2
+
+render(elements2, data1) // elements1
+</code></pre></section>
+
+<section  class=""><h2 id="so-what-">So what?</h2>
+</section>
+
+<section  class=""><h2 id="composition">Composition</h2>
+<pre><code class="lang-javascript">var drawLineChart = lineChart();
+var drawAxis = axis();
+var addLabels = labelGenerator();
+
+function renderXyPlot(data) {
+  d3.select(&quot;#chart&quot;)
+  .call(drawLineChart, data)
+  .call(drawAxis, data)
+  .call(addLabels, data)
+}
+</code></pre>
+</section>
+
+<section  class=""><h2 id="collaboration">Collaboration</h2>
+<pre><code class="lang-javascript">
+function renderXyPlot(data) {
+  d3.select(&quot;#chart&quot;)
+  .call(drawLineChart, data)
+  .call(drawAxis, data)
+  .call(addLabels, data)
+} 
+
+function renderHeatMap(data) {
+
+  var sectors = heatmap();
+  var laidOut = heatmap.nodes(data);
+
+  d3.select(&quot;#chart&quot;)
+  .call(renderSectors, sectors)
+  .call(renderNodes, laidOut)
+}
+</code></pre>
+</section>
+
+<section data-state='title' class=""><h2 id="using-d3-ng">Using d3 + ng</h2>
+</section>
+
+<section data-state='subtitle' class=""><h2 id="attempt-one">Attempt one</h2>
 </section>
 
 <section  class=""><h2 id="best-practice">Best practice</h2>
@@ -269,8 +301,14 @@ render(elements1, data1) // elements1&lt;/p&gt;
 <section  class=""><h2 id="-directives-"><code>&lt;directives&gt;</code></h2>
 </section>
 
-<section  class=""><h2 id="making-html-a-language-fit-for-your-app">Making HTML a language fit for your app</h2>
-<p>Not <code>&lt;div class=&#39;profile&#39;&gt;</code>, but <code>&lt;profile&gt;</code></p>
+<section  class=""><h2 id="app-flavoured-html">App-flavoured HTML</h2>
+<pre><code class="lang-html">&lt;!-- BOOO!! --&gt;
+&lt;div class=&#39;profile&#39;&gt;&lt;/div&gt;
+
+&lt;!-- YAAAAY! --&gt;
+&lt;profile&gt;&lt;/profile&gt;
+`
+</code></pre>
 </section>
 
 <section  class=""><h2 id="one-directive-per-chart">One directive per chart</h2>
@@ -280,17 +318,19 @@ render(elements1, data1) // elements1&lt;/p&gt;
 </section>
 
 <section  class=""><h2 id="-bar-chart-"><code>&lt;bar-chart&gt;</code></h2>
-<pre><code>&lt;bar-chart
-  series=&quot;ctrl.series&quot;
-  y-scale=&quot;ctrl.yScale&quot;
-  &gt;
-&lt;/bar-chart&gt;
+<pre><code>&lt;div ng-controller=&#39;ReportCtrl as ctrl&#39;&gt;
+  &lt;bar-chart
+    series=&quot;ctrl.series&quot;
+    y-scale=&quot;ctrl.yScale&quot;
+    &gt;
+  &lt;/bar-chart&gt;
+&lt;/div&gt;
 </code></pre></section>
 
-<section  class=""><h2 id="ok-for-completely-generic-bits">Ok for completely generic bits</h2>
+<section  class=""><h2 id="sometimes-great-">Sometimes, great!</h2>
 </section>
 
-<section  class=""><h2 id="e-g-sparklines">e.g sparklines</h2>
+<section  class=""><h2 id="e-g-cool-inputs">e.g cool inputs</h2>
 </section>
 
 <section data-state='bad' class=""><h2 id="but-">But...</h2>
@@ -299,10 +339,13 @@ render(elements1, data1) // elements1&lt;/p&gt;
 <section  class=""><h2 id="we-had-more-ambition">We had more ambition</h2>
 </section>
 
-<section  class=""><h2 id="moving-data-between-charts">Moving data between charts</h2>
+<section  class=""><h2 id="remember-collaboration-">Remember collaboration?</h2>
 </section>
 
-<section  class=""><h2 id="element-consistency">Element consistency</h2>
+<section  class=""><h2 id="seamless-transitions-between-components">Seamless transitions between components</h2>
+</section>
+
+<section  class=""><h2 id="same-elements">Same elements</h2>
 </section>
 
 <section data-state='bad' class=""><h2 id="first-clash">First clash</h2>
@@ -318,7 +361,26 @@ render(elements1, data1) // elements1&lt;/p&gt;
 <p><img src="img/oo.png" alt="overlap"></p>
 </section>
 
-<section data-state='subtitle' class=""><h2 id="attempt-2">Attempt 2</h2>
+<section  class=""><h2 id="oo-view-of-dom">OO view of DOM</h2>
+<p>Implementation detail to be hidden</p>
+</section>
+
+<section  class=""><h2 id="d3-view-of-dom">D3 view of DOM</h2>
+<p>Simple data, ready to be used</p>
+</section>
+
+<section  class=""><h2 id="embrace-data">Embrace data</h2>
+<blockquote>
+<p> Better have 100 functions for 1 data structure than 10 functions for 10 data structures</p>
+</blockquote>
+<p>Alan Perlis</p>
+</section>
+
+<section  class=""><h2 id="why-different-">Why different?</h2>
+<p>D3 is idempotent, DOM is just more data</p>
+</section>
+
+<section data-state='subtitle' class=""><h2 id="attempt-two">Attempt two</h2>
 </section>
 
 <section  class=""><h2 id="stacking-attributes">Stacking attributes</h2>
@@ -354,33 +416,16 @@ render(elements1, data1) // elements1&lt;/p&gt;
 </section>
 
 <section  class=""><h2 id="not-idiomatic">Not idiomatic</h2>
+<p>Too many WTFs from people new to the team</p>
 </section>
 
-<section  class=""><h2 id="loses-d3-s-insane-composability">Loses D3&#39;s insane composability</h2>
-</section>
-
-<section data-state='subtitle' class=""><h2 id="attempt-3">Attempt 3</h2>
-</section>
-
-<section  class=""><h2 id="take-a-step-back">Take a step back</h2>
-</section>
-
-<section  class=""><h2 id="why-declarative-">Why declarative?</h2>
-</section>
-
-<section  class=""><h2 id="break-apart-concerns">Break apart concerns</h2>
-</section>
-
-<section  class=""><h2 id="angular-holds-state">Angular holds state</h2>
-</section>
-
-<section  class=""><h2 id="d3-renders">D3 renders</h2>
+<section  class=""><h2 id="gain-collaboration-loses-composability">Gain collaboration, loses composability</h2>
 </section>
 
 <section data-state='bad' class=""><h2 id="but-">But...</h2>
 </section>
 
-<section  class=""><h2 id="i-had-a-moment-of-doubt">I had a moment of doubt</h2>
+<section data-state='bad' class=""><h2 id="i-had-a-moment-of-doubt">I had a moment of doubt</h2>
 </section>
 
 <section  class=""><h2 id="why-do-all-the-apps-i-build-look-the-same-">Why do all the apps I build look the same?</h2>
@@ -389,16 +434,7 @@ render(elements1, data1) // elements1&lt;/p&gt;
 <section  class=""><h2 id="why-did-people-new-to-d3-ng-build-cooler-stuff-than-me-">Why did people new to D3 + ng build cooler stuff than me?</h2>
 </section>
 
-<section  class=""><h2 id="maybe-there-was-something-wrong-with-me">Maybe there was something wrong with me</h2>
-</section>
-
-<section  class=""><h2 id="maybe-i-had-been-indoctrinated">Maybe I had been indoctrinated</h2>
-</section>
-
-<section  class=""><h2 id="then-i-realised">Then I realised</h2>
-</section>
-
-<section  class=""><h2 id="i-had-developed">I had developed</h2>
+<section  class=""><h2 id="something-was-wrong-with-me">Something was wrong with me</h2>
 </section>
 
 <section  class=""><h2 id="programmer-vision">Programmer vision</h2>
@@ -413,7 +449,56 @@ render(elements1, data1) // elements1&lt;/p&gt;
 <section  class=""><h2 id="where-simple-things-were-impossible">Where simple things were impossible</h2>
 </section>
 
-<section  class=""><h2 id="-"> </h2>
+<section  class=""><h2 id="where-doing-it-the-right-way-">Where doing it the &#39;right way&#39;</h2>
+</section>
+
+<section  class=""><h2 id="was-more-important-than-doing-it-at-all">Was more important than doing it at all</h2>
+</section>
+
+<section data-state='title' class=""><h2 id="the-challenge">The challenge</h2>
+</section>
+
+<section  class=""><h2 id="to-see-afresh">To see afresh</h2>
+</section>
+
+<section  class=""><h2 id="brief">Brief</h2>
+<ul>
+<li>x/y plot</li>
+<li>editable data</li>
+<li>update on change</li>
+</ul>
+</section>
+
+<section  class=""><h2 id="pfff-too-easy">Pfff! Too easy</h2>
+</section>
+
+<section  class=""><h2 id="auto-pilot">Auto-pilot</h2>
+<p><img src="img/chart-boring.png" alt="boring chart"></p>
+</section>
+
+<section  class=""><h2 id="add-modal">Add modal</h2>
+<p><img src="img/chart-modal.png" alt="boring modal"></p>
+</section>
+
+<section data-state='bad' class=""><h2 id="no-programmer-vision-">NO! PROGRAMMER VISION!</h2>
+</section>
+
+<section  class=""><h2 id="direct-access">Direct access</h2>
+</section>
+
+<section  class=""><h2 id="but-how-">But how?</h2>
+</section>
+
+<section  class=""><h2 id="angular-s-d3-s-powers">Angular&#39;s + d3&#39;s powers</h2>
+</section>
+
+<section  class=""><h2 id="beat-the-tools-into-submission-">Beat the tools into submission!</h2>
+</section>
+
+<section  class=""><h2 id="-d3-angularize-"><code>d3.angularize()</code></h2>
+</section>
+
+<section  class=""><h2 id="flip-the-hierarchy-">Flip the hierarchy!</h2>
 </section>
 
 </div>

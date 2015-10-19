@@ -1,60 +1,44 @@
-## d3 ≃ jQuery + data
+## Meet d3
 {tags:{state:"title"}}
 
+## d3 ≃ jQuery + data
 
 ## jQuery-ish
 
 - select elements
-- work with that selection via chaining API
+- affect those elements via chaining API
 
 ## e.g
 {class: "notitle"}
 
-
 <script type=eg code-sample>
-  <svg id=circle width=600 height=220>
+  <svg id=meetD3 width=600 height=220>
+    <circle r=50 cx=300 cy=110 fill=black />
   </svg>
-
-  <code>
-    d3.select("#circle")
-    .append("circle")
-    .attr({
-      r: 100,
-      cx: 300,
-      cy: 100,
-      fill: "cadetblue",
-    });
-  </code>
 </script>
 
-## Live
-
-<section>
-<script type=code-example-alongside>
-  <div id=familiar>
-    <h3>Hi</h3>
-    <a>jQuery</a>
-    <a>MDN docs</a>
-  </div>
-</script>
 <div class=little-console></div>
-<script type=cheat>
-  d3.selectAll("#familiar a").attr("href","http://google.com");
-</script>
-</section>
 
-## One callback turns jQ into D3
+<script type=cheat>
+  d3.selectAll("#meetD3 circle").attr("fill", "pink");
+</script>
+
+## Nothing new so far
+
+## One callback API turns jQ into D3
 {tags:{state: "subtitle"}}
 
 
 ## D3's callback
+{todo: "demo"}
 
-```javascript
+```
 d3.selectAll(".bars")
-.style("background",function(dataForElement,indexOfData) {
+.style("background",function(dataForElement) {
   return dataForElement.alert ? "red" : "green";
 });
 ```
+
 ## `(data,...) {`
 
 - the data for an element
@@ -65,13 +49,13 @@ d3.selectAll(".bars")
 
 ## The bridge, el -> data
 
-```javascript
+```
 function(data,index) {
   // return value from data + index
 }
 ```
 
-```javascript
+```
 d3.select("#root")
   .selectAll("h3")
   .text(function(d) {
@@ -82,7 +66,7 @@ d3.select("#root")
 
 ## `data()`
 
-```javascript
+```
 // make a selection, then call data()
 d3.selectAll("h3")
   .data([
@@ -92,28 +76,34 @@ d3.selectAll("h3")
   // now data can be related one-to-one with elements
 ```
 
+## The data-join!
+
 ## Driving the document with data
 
-<script type=code-example-alongside>
+<script type=eg code-sample>
   <h3 class=drive-me></h3>
   <h3 class=drive-me></h3>
 </script>
+
 <div class=little-console></div>
 
 <script type=cheat>
   d3.selectAll(".drive-me").data([{title:"hi"},{title:"jquery"}]).text(function(d) { return d.title })
 </script>
 
-## Datums -> elements via key function
+## Synchronising data and screen
 
-## `ƒ(d,i) { return d.id }`
+- updating 
+- adding
+- removing
 
-- by default, just `{ return index }`
+## Synchronising data and elements
 
-## Example
-
-- by default, just `{ return index }`
-
+```javascript
+var update = d3.selectAll('.x').data(data);
+var enter = update.enter();
+var exit = update.exit();
+```
 
 ## Contexts explained
 {class:"notitle", todo: "remove title"}
@@ -139,7 +129,7 @@ d3.selectAll("h3")
       <div class='enter track'></div>
     </div>
     <div>
-      <h3>Update</h3>
+      <h3 class=code>update</h3>
       <div class='update track'></div>
     </div>
     <div>
@@ -151,14 +141,19 @@ d3.selectAll("h3")
 </div>
 
 
-## Big idea: idempotency
+## Big idea
+{tags:{state: "subtitle"}}
 
-- d3 rendering keeps data and screen in sync
+## Idempotency
+{tags:{state: "subtitle"}}
 
-## Rendering just a function
+## d3 components = functions that sync `<DOM>` & `{data}`
+
+## Components are just a function
 
 ```
 render(elements0, data1) // elements1
+
 render(elements1, data1) // elements1
 
 render(elements1, data2) // elements2
@@ -166,5 +161,43 @@ render(elements1, data2) // elements2
 render(elements2, data1) // elements1
 ```
 
+## So what?
+
+## Composition
+
+```javascript
+var drawLineChart = lineChart();
+var drawAxis = axis();
+var addLabels = labelGenerator();
+
+function renderXyPlot(data) {
+  d3.select("#chart")
+  .call(drawLineChart, data)
+  .call(drawAxis, data)
+  .call(addLabels, data)
+} 
+```
+
+## Collaboration
+
+```javascript
+
+function renderXyPlot(data) {
+  d3.select("#chart")
+  .call(drawLineChart, data)
+  .call(drawAxis, data)
+  .call(addLabels, data)
+} 
+
+function renderHeatMap(data) {
+
+  var sectors = heatmap();
+  var laidOut = heatmap.nodes(data);
+
+  d3.select("#chart")
+  .call(renderSectors, sectors)
+  .call(renderNodes, laidOut)
+} 
+```
 
 

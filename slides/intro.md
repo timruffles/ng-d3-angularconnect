@@ -1,32 +1,40 @@
-## A tough year
+## My year
 {tags:{state:"title"}}
 
-## Strange bed-fellows
+## A suprise
+
+## You built what?!
+
+![transitions](img/transitions.gif)
+
+## I said yes
+
+## I wanted to build cool things
+
+![transitions](img/transitions-b.gif)
+
+## Cleaning up the code...
+
+## A tale involving two characters
 
 ## A mutual friend, and a new face
 
 ## Our friend `ng`
 {tags:{state:"title"}}
 
-## A person of heft
+<img class='offset' src="img/ng.png" alt="angular js shield logo">
 
-## Smart
+## Hefty
 
 ## Big ideas
-
-## Visionary
 
 "HTML for web apps"
 
 ## D3
 {tags:{state:"title"}}
 
-## Niche
-
 ## 'Just a library'
-
-## But...
 
 ## Has some big ideas too
 
-## Perhaps as big as Angular's
+

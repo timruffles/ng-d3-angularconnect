@@ -15,7 +15,7 @@ exports.toHtml = function(source) {
 }
 
 exports.parse = function(source) {
-  var components = marked.Lexer.lex(source, {});
+  var components = marked.Lexer.lex(source);
 
   var GRAMMAR = {
     slideFile: function() {

@@ -1,28 +1,15 @@
-.snobs body {
-  background: url(../img/snob.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+.bad body {
+  background: red;
 }
-.change body {
-  background: url(../img/change.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.side-effects body {
-  background: url(../img/side-effects.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.change .reveal h2 {
-  color: #000;
-}
-.split .reveal h2, .snobs .reveal h2 {
+
+.bad body h2 {
   color: #fff;
 }
 
-
-.login, .logout {
-  font-size: 1em !important;
+body {
+  /* transform is ported from reveal
+     need !important to override reveal's styling */
+  transition: transform 0.8s ease, background 0.5s !important;
 }
 
 .notitle h2 {

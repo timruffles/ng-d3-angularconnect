@@ -1,7 +1,8 @@
-## Collaboration
+## Using d3 + ng
 {tags:{state:"title"}}
 
-## Attempt 1
+## Attempt one
+{tags:{state:"subtitle"}}
 
 ## Best practice
 
@@ -9,9 +10,15 @@
 
 ## `<directives>`
 
-## Making HTML a language fit for your app
+## App-flavoured HTML
 
-Not `<div class='profile'>`, but `<profile>`
+```html
+<!-- BOOO!! -->
+<div class='profile'></div>
+
+<!-- YAAAAY! -->
+<profile></profile>
+````
 
 ## One directive per chart
 
@@ -19,24 +26,29 @@ Not `<div class='profile'>`, but `<profile>`
 
 ## `<bar-chart>`
 
-    <bar-chart
-      series="ctrl.series"
-      y-scale="ctrl.yScale"
-      >
-    </bar-chart>
+    <div ng-controller='ReportCtrl as ctrl'>
+      <bar-chart
+        series="ctrl.series"
+        y-scale="ctrl.yScale"
+        >
+      </bar-chart>
+    </div>
 
-## Ok for completely generic bits
+## Sometimes, great!
 
-## e.g sparklines
+## e.g cool inputs
+{todo: "add clock demo"}
 
 ## But...
 {tags:{state:"bad"}}
 
 ## We had more ambition
 
-## Moving data between charts
+## Remember collaboration?
 
-## Element consistency
+## Seamless transitions between components
+
+## Same elements
 
 ## First clash
 {tags:{state:"bad"}}
@@ -49,7 +61,25 @@ Not `<div class='profile'>`, but `<profile>`
 
 ![overlap](img/oo.png)
 
-## Attempt 2
+## OO view of DOM
+
+Implementation detail to be hidden
+
+## D3 view of DOM
+
+Simple data, ready to be used
+
+## Embrace data
+
+>  Better have 100 functions for 1 data structure than 10 functions for 10 data structures
+
+Alan Perlis
+
+## Why different?
+
+D3 is idempotent, DOM is just more data
+
+## Attempt two
 {tags:{state:"subtitle"}}
 
 ## Stacking attributes
@@ -87,21 +117,9 @@ DOM nodes accessible to all directives
 
 ## Not idiomatic
 
-## Loses D3's insane composability
+Too many WTFs from people new to the team
 
-## Attempt 3
-{tags:{state:"subtitle"}}
-
-## Take a step back
-
-## Why declarative?
-{todo: "talk about - is it worth it"}
-
-## Break apart concerns
-
-## Angular holds state
-
-## D3 renders
+## Gain collaboration, loses composability
 
 ## But...
 {tags:{state:"bad"}}
