@@ -2,6 +2,7 @@
 {tags:{state:"bad"}}
 
 ## Why do all the apps I build look the same?
+{todo: "square world"}
 
 ## Why did people new to D3 + ng build cooler stuff than me?
 

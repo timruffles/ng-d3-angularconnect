@@ -196,6 +196,10 @@ renderCollaborator(colData);
 
 <div class=little-console></div>
 
+<script type=cheat>
+  switchCollaborator();
+</script>
+
 <script>
 onSlideWithElementShown(document.getElementById("collaborationDemo"), function() {
   collaborationDemo.apply(null, arguments);
@@ -219,20 +223,7 @@ function xyPlot() {
 }
 ```
 
-## Functions over 2 data-sets
-
-```javascript
-function barChart() {
-
-  bars.itemClass = setterGetter();
-
-  return bars(selection, data) {
-    selection.selectAll("." + plot.itemClass())
-    .data(data)
-    // ... etc
-  }
-}
-```
+## d3 components = ƒ over 2 data-sets
 
 ## Data + elements
 
@@ -253,14 +244,5 @@ function render() {
 } 
 ```
 
-## d3's big ideas
-{tags:{state:"subtitle"}}
-
-## d3 ≃ jQuery + data = data-join
-{class: "big-text"}
-
-## Sync via `enter()`, update and `exit()`
-
-## Collaboration (via idempotency)
-
+## Idempotency = DOM is just data
 

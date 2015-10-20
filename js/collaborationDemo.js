@@ -116,13 +116,9 @@ function collaborationDemo(el, slideEl, bbox) {
       var padding = 25;
 
       // for quick demo
-      var dataByIndex = [
-        { y: 0.5 },
-        { y: 0.3 },
-        { y: 0.8 },
-        { y: 0.7 },
-        { y: 0.3 },
-      ]
+      var dataByIndex = _.times(50, function() {
+        return { y: Math.random() } 
+      })
 
       // padding - both sides, and fence posted inside
       var dx = (bbox.width - padding * (2 + data.length - 1)) / data.length;

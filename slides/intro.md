@@ -59,8 +59,8 @@ onSlideWithElementShown(document.getElementById("d3Demo"), function(el) {
 })
 </script>
 
-## 'Just a library'
+## Just a library
 
-## Has some big ideas too
+## Has big ideas too
 
 

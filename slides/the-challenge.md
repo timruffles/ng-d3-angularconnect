@@ -70,9 +70,8 @@ onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
 })
 </script>
 
-## What I learned
-
 ## Coding `===` enabling
+{tags:{state:"title"}}
 
 ## When faced with a challenge
 
@@ -80,12 +79,17 @@ onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
 
 ##  
 
-<a class="tweet" href="http://twitter.com/">@timruffles</a>
+<a class="tweet" style="opacity: 0" href="http://twitter.com/">@timruffles</a>
 
 <svg id='yes'</svg>
 
 <script>
-onSlideWithElementShown(document.getElementById("yes"), function() {
+onSlideWithElementShown(document.getElementById("yes"), function(el, slideEl) {
+  setTimeout(function() {
+    d3.select(slideEl)
+    .select(".tweet")
+    .style("opacity", 1)
+  }, 1250);
   yesDemo.apply(null, arguments);
 })
 </script>
