@@ -30,7 +30,6 @@
 
 
 ## D3's callback
-{todo: "demo"}
 
 ```
 d3.selectAll(".bars")
@@ -87,7 +86,6 @@ d3.selectAll("h3")
 - removing
 
 ## Synchronising data and elements
-{ todo: "demo" }
 
 ```javascript
 var update = d3.selectAll('.x').data(data);
@@ -115,7 +113,7 @@ onSlideWithElementShown(document.getElementById("contextsDemo"), function() {
 })
 </script>
 
-## Contexts explained
+## 
 {class:"notitle", todo: "remove title"}
 
 <div class=contexts-explained>

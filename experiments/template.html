@@ -1,11 +1,7 @@
 <form name='dataForm'>
-  <label>
-    Activity: 
-  </label>
-  <input name=name
-     ng-model="ctrl.data.name"
-     required
-     >
+  <h3>
+    {{ ctrl.data.name }}
+  </h3>
 
   <label>
     Risk {{ ctrl.data.risk | percent }} 

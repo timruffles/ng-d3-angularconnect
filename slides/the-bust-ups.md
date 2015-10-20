@@ -40,8 +40,6 @@
 ## Sometimes, great!
 
 ## 
-{todo: "add clock demo"}
-
 
 <script type=eg code-sample>
   <form name=timeForm ng-controller="TimeCtrl as timeCtrl">

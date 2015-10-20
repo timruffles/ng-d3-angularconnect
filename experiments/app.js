@@ -84,8 +84,8 @@ function main(el, opts) {
 
 
   var PADDING = 10;
-  var w = opts.width - 50;
-  var h = opts.height - 50;
+  var w = opts.width - 100;
+  var h = opts.height - 200;
   var r = w / data.length / 2 - PADDING;
   var constrainingDimension = Math.min(w,h);
 
@@ -95,14 +95,41 @@ function main(el, opts) {
 
   var root = d3.select(el)
   .attr({
-    width: w,
+    width: opts.width,
     height: h,
   })
 
+
+  labels();
   xyPlot();
 
   return function cleanup() {
     root.html(""); 
+  }
+
+  function labels() {
+    root.append("text")
+     .text("Risk")
+     .attr({
+       x: w/2,
+       y: h - 10,
+       "font-size": "2rem",
+     }) 
+
+    root
+     .append("g")
+     .attr("transform", function() {
+       return translate(25, h/2); 
+     })
+     .append("text")
+     .attr({
+       "font-size": "2rem",
+       "text-anchor": "middle",
+     }) 
+     .style({
+       "transform": "rotate(-90deg)"
+     })
+     .text("Reward")
   }
 
   function translate(x,y) {
@@ -242,10 +269,12 @@ function main(el, opts) {
 
   function xyPlot() {
 
+    var xPadding = 50;
     var padding = 25;
+
     var rRange = [10, 50];
     var xScale = d3.scale.linear()
-      .range([padding + rRange[1], w - padding - rRange[1]])
+      .range([xPadding + rRange[1], w - xPadding - rRange[1]])
 
     var yScale = d3.scale.linear()
     // flip so we have higher values higher on screen
@@ -255,14 +284,16 @@ function main(el, opts) {
       .range(rRange)
       .domain(d3.extent(data, _.property("cost")))
 
+    axes();
+
     var update = root
-    .selectAll("g")
+    .selectAll(".points")
     .data(data, function(d) {
       return d.name; 
     })
 
     var enter = update.enter()
-    .append("g")
+    .append("g").classed("points", true)
     .classed("point", true)
     .on("click", handoverToEditor)
     .attr("transform", function(d, i) {
@@ -306,11 +337,41 @@ function main(el, opts) {
         if(dt < snapBack) {
           return snapBackInterpolate(dt / snapBack);
         } else {
-          return newValueInterpolate(dt - snapBack / (1-snapBack));
+          dt = (dt - 0.2) / 0.8;
+          return newValueInterpolate(dt);
         }
       }
     })
 
+    function axes() {
+      var xAxis = d3.svg.axis()
+        .scale(xScale)
+        .tickFormat(function(v) {
+          return Math.round(v * 100) + "%";
+        })
+
+      var yAxis = d3.svg.axis()
+        .scale(yScale)
+        .orient("left")
+        .tickFormat(function(v) {
+          return Math.round(v * 100) + "%";
+        })
+
+      axis("xAxis", xAxis)
+        .attr("transform", translate(0, yScale(0)))
+
+      axis("yAxis", yAxis)
+        .attr("transform", translate(xScale(0), -5))
+
+
+      function axis(klass, axis) {
+        return root.selectAll("." + klass)
+        .data([1])
+        .enter()
+        .append("g").classed(klass + " axis", true)
+        .call(axis);
+      }
+    }
   }
 
   function onEndRemove(sel) {

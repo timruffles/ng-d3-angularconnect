@@ -26,6 +26,10 @@
 
 ## Direct access
 
+![cool idea](img/chart-boring.png)
+
+## Show don't tell
+
 ![cool idea](img/direct-access.png)
 
 ## But `<form>` + `<svg>`?
@@ -73,9 +77,9 @@ onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
 ## Coding `===` enabling
 {tags:{state:"title"}}
 
-## When faced with a challenge
+## When we have ambition
 
-## It's better to say...
+## Let's find reasons to say
 
 ##  
 

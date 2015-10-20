@@ -23,8 +23,9 @@ body {
 
 .reveal a.tweet {
   position: absolute;
-  top: 2rem;
+  top: 3rem;
   right: 2rem;
+  font-weight: 200;
   text-align: right;
   text-decoration: none;
   transition: all 0.5s;
@@ -47,4 +48,12 @@ body {
 
 clock-input {
   display: block;
+}
+
+.axis  .domain {
+  fill: none;
+  stroke: #000;
+}
+.axis  text {
+  font-size: 1.5rem;
 }
