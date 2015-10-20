@@ -39,8 +39,18 @@
 
 ## Sometimes, great!
 
-## e.g cool inputs
+## 
 {todo: "add clock demo"}
+
+
+<script type=eg code-sample>
+  <form name=timeForm ng-controller="TimeCtrl as timeCtrl">
+    <clock-input name=time ng-model="timeCtrl.item.time"
+      valid-time="pm"
+      >
+    </clock-input>
+  </form>
+</script>
 
 ## No giant files!
 

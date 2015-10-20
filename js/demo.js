@@ -8,7 +8,7 @@ function getApp() {
     pruneOutByTag.apply(null, qString()["prune"].split(","));
   }
 
-  var app = angular.module("slides",[]);
+  var app = angular.module("slides",["ngModelClockDemo"]);
 
   var controllerProvider;
   var compileProvider;

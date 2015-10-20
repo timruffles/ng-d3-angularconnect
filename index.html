@@ -13,6 +13,7 @@
   <!-- demos -->
   <link rel="stylesheet" href="js/d3-contexts-explained.css">
   <link rel="stylesheet" href="experiments/style.css">
+  <link rel="stylesheet" href="js/ngModelClockDemo.css">
 
   <!-- for live coding -->
   <link rel="stylesheet" href="js/little-console.css" id="theme">
@@ -408,7 +409,16 @@ function render() {
 <section  class=""><h2 id="sometimes-great-">Sometimes, great!</h2>
 </section>
 
-<section  class=""><h2 id="e-g-cool-inputs">e.g cool inputs</h2>
+<section  class=""><h2 id="-"> </h2>
+<script type=eg code-sample>
+  <form name=timeForm ng-controller="TimeCtrl as timeCtrl">
+    <clock-input name=time ng-model="timeCtrl.item.time"
+      valid-time="pm"
+      >
+    </clock-input>
+  </form>
+</script>
+
 </section>
 
 <section  class=""><h2 id="no-giant-files-">No giant files!</h2>
@@ -591,6 +601,7 @@ onSlideWithElementShown(document.getElementById("yes"), function(el, slideEl) {
 <script src=js/collaborationDemo.js></script>
 <script src=js/contextsDemo.js></script>
 <script src=js/yes.js></script>
+<script src=js/ngModelClockDemo.js></script>
 
 <!-- live coding -->
 <script src=js/little-console.js></script>

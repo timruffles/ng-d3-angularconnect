@@ -115,13 +115,22 @@ function main(el, opts) {
     root
     .selectAll(".point")
     .filter(function(d) {
-      return d !== selected; 
+      if(d === selected) {
+        return true;
+      } else {
+        // clean up editing
+        d.previous = null;
+        return false;
+      }
     })
     .select("circle")
     .transition()
     .attr("r", 0)
 
     var editedPoint = this;
+
+    // ensure lower layer
+    $(this.parentElement).append(this);
 
     d3.select(editedPoint)
     .transition()
@@ -264,16 +273,42 @@ function main(el, opts) {
     .append("circle")
 
     update
-    .transition()
-    .attr("transform", function(d, i) {
-      return translate(xScale(d.risk), yScale(d.reward))
-    })
+    .transition("basic")
     .select("circle")
     .attr("r", function(d) {
       return rScale(d.cost)
     })
     .attr("fill", function(d, i) {
       return scales.fill(i);
+    })
+
+    update
+    .transition("position")
+    .duration(function(d) {
+      return d.previous ? 2000 : 500; 
+    })
+    .attrTween("transform", function(d, i) {
+      if(!d.previous) {
+        return d3.interpolateString(translate(d.x, d.y), translate(xScale(d.risk), yScale(d.reward)));
+      }
+
+      var snapBack = 0.2;
+      var snapBackInterpolate = d3.interpolateString(
+        translate(d.x, d.y), 
+        translate(xScale(d.previous.risk), yScale(d.previous.reward))
+      );
+      var newValueInterpolate = d3.interpolateString(
+        translate(xScale(d.previous.risk), yScale(d.previous.reward)), 
+        translate(xScale(d.risk), yScale(d.reward))
+      );
+
+      return function(dt) {
+        if(dt < snapBack) {
+          return snapBackInterpolate(dt / snapBack);
+        } else {
+          return newValueInterpolate(dt - snapBack / (1-snapBack));
+        }
+      }
     })
 
   }
@@ -298,6 +333,7 @@ function DemoCtrl(
   this.totalDigests = 0;
   
   this.data = $data;
+  this.data.previous = _.clone($data);
 
   this.updated = function() {
     $render(); 
