@@ -4,13 +4,38 @@
  */
 angular.module("demo", [])
 .controller("DemoCtrl", DemoCtrl)
-.directive("integerValue", function() {
+.directive("integercost", function() {
   return {
     require: "ngModel",
     link: function(scope, el, attrs, ngModel) {
       ngModel.$parsers.push(Math.round);
     },
   } 
+})
+.directive("isRatio", function() {
+  return {
+    require: "ngModel",
+    link: function(scope, el, attrs, ngModel) {
+      ngModel.$render = function() {
+        console.log(ngModel.$modelValue);
+        
+        el[0].value = ngModel.$modelValue * 100;
+      }
+
+      ngModel.$parsers.push(function(v) {
+        return v/100; 
+      });
+
+      ngModel.$validators.isRatio = function(v) {
+        return !isNaN(v) && v >= 0 && v <= 1;  
+      }
+    },
+  } 
+})
+.filter("percent", function() {
+  return function(v) {
+    return (v * 100).toFixed(0) + "%";
+  }
 })
 
 window.resolutionDemo = main;
@@ -32,16 +57,28 @@ function main(el, opts) {
 
   var data = [
     {
-      name: "one",
-      risk: 0.1,
-      reward: 0.2,
-      value: 5,
+      name: "A nice cup of tea",
+      risk: 0.001,
+      reward: 0.1,
+      cost: 0.1,
     },
     {
-      name: "two",
-      risk: 0.3,
+      name: "Cliff jumping",
+      risk: 0.2,
       reward: 0.5,
-      value: 6,
+      cost: 50,
+    },
+    {
+      name: "Mountain biking",
+      risk: 0.8,
+      reward: 0.6,
+      cost: 200,
+    },
+    {
+      name: "Gliding over erupting volcano",
+      risk: 0.99999,
+      reward: 0.9,
+      cost: 1000,
     },
   ];
 
@@ -58,8 +95,8 @@ function main(el, opts) {
 
   var root = d3.select(el)
   .attr({
-    width: innerWidth,
-    height: innerHeight,
+    width: w,
+    height: h,
   })
 
   xyPlot();
@@ -73,6 +110,8 @@ function main(el, opts) {
   }
 
   function handoverToEditor(selected) {
+    var editorR = constrainingDimension/2 - 50;
+
     root
     .selectAll(".point")
     .filter(function(d) {
@@ -82,31 +121,49 @@ function main(el, opts) {
     .transition()
     .attr("r", 0)
 
-    d3.select(this)
-    .transition()
-    .attr("transform", function() {
-      return translate(w/2,h/2);
-    })
-    .select("circle")
-    .attr("r", constrainingDimension/2 - 50)
+    var editedPoint = this;
 
+    d3.select(editedPoint)
+    .transition()
+    .attr("transform", center)
+    .select("circle")
+    .attr("r", editorR)
+    .each("end", function(d, i) {
+      // selection of 1
+      editor();
+    })
+
+    function center() {
+      return translate(w/2,h/2);
+    }
+
+    function render() {
+      d3.select(editedPoint)
+      .transition()
+      .select("circle")
+      .attr("r", editorR)
+    }
     
     function editor() {
-      enter
+      root
+      .selectAll(".editor")
+      .data([selected])
+      .enter()
       .append("foreignObject")
+      .attr("class", "editor")
       .attr({
-        width: r,
-        height: r,
+        width: editorR,
+        height: editorR,
       })
       .attr("x", function(d, i) {
-        return r/2 + i * 2 * (r + PADDING);
+        return w/2 - editorR/1.5;
       })
-      .attr("y", r/2)
+      .attr("y", h/2-editorR/1.5)
       .append("xhtml:body")
       .angularise(function(d, i) {
         return {
           locals: {
-            $render: xyPlot,
+            $render: render,
           },
           templateUrl: "experiments/template.html",
           injector: "demo" + i,
@@ -115,21 +172,79 @@ function main(el, opts) {
           modules: ["demo"],
         }
       })
+
+      back();
+
+      function handoverToPlot() {
+        root.select(".back-x")
+          .remove();
+
+        root.select(".back")
+          .transition()
+          .attr("r", 0)
+          .call(onEndRemove)
+          .each("end", function() {
+            d3.select(this).remove();
+
+            root.select(".editor")
+            .transition()
+            .attr("opacity", 0)
+            .each("end", function() {
+              d3.select(this).remove();
+              xyPlot();
+            })
+          })
+        
+      }
+
+      function back() {
+        var x  = w*0.9;
+        var y  = h*0.1;
+        var r = w*0.05;
+
+        root
+        .append("circle")
+        .attr("class", "back")
+        .on("click", handoverToPlot)
+        .attr("cx", x)
+        .attr("cy", y)
+        .attr("fill", "hsl(197, 74%, 66%)")
+        .attr("r", 0)
+        .transition()
+        .attr("r", r)
+        .each("end", function() {
+          root
+          .append("text")
+          .attr("class", "back-x")
+          .on("click", handoverToPlot)
+          .attr("x", x)
+          .attr("y", y)
+          .attr("dy", "0.35em")
+          .text("X")
+          .style({
+            "text-anchor": "middle",
+            "fill": "white",
+          })
+        })
+
+      }
     }
   }
 
   function xyPlot() {
 
     var padding = 25;
+    var rRange = [10, 50];
     var xScale = d3.scale.linear()
-      .range([padding, innerWidth - padding])
+      .range([padding + rRange[1], w - padding - rRange[1]])
 
     var yScale = d3.scale.linear()
-      .range([padding, innerHeight - padding])
+    // flip so we have higher values higher on screen
+      .range([h - padding - rRange[1], padding + rRange[1]])
 
     var rScale = d3.scale.linear()
-      .range([10, 50])
-      .domain(d3.extent(data, _.property("value")))
+      .range(rRange)
+      .domain(d3.extent(data, _.property("cost")))
 
     var update = root
     .selectAll("g")
@@ -141,22 +256,32 @@ function main(el, opts) {
     .append("g")
     .classed("point", true)
     .on("click", handoverToEditor)
+    .attr("transform", function(d, i) {
+      return translate(xScale(d.risk), yScale(d.reward))
+    })
 
     enter
     .append("circle")
 
     update
+    .transition()
     .attr("transform", function(d, i) {
       return translate(xScale(d.risk), yScale(d.reward))
     })
     .select("circle")
     .attr("r", function(d) {
-      return rScale(d.value)
+      return rScale(d.cost)
     })
     .attr("fill", function(d, i) {
       return scales.fill(i);
     })
 
+  }
+
+  function onEndRemove(sel) {
+    sel.each("end", function() {
+      d3.select(this).remove();
+    })
   }
 
 }

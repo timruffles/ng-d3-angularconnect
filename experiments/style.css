@@ -1,3 +1,24 @@
 [ng-controller~=DemoCtrl] {
   color: #fff;
 }
+
+#resolutionDemo body {
+  background: none;
+  font-family: Helvetica, sans-serif;
+  color: #fff;
+  text-align: left;
+}
+
+#resolutionDemo label {
+  display: block;
+}
+
+#resolutionDemo .back
+, #resolutionDemo .back-x {
+  cursor: pointer;
+}
+
+#resolutionDemo input[type=text] {
+  font-size: 1.25rem;
+  width: 100%;
+}

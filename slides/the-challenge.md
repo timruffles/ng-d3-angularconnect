@@ -36,13 +36,13 @@
 
 ##  
 
-<svg id='realisationDemo' class="demo"></svg>
+<svg id='resolutionDemo' class="demo"></svg>
 
 <script>
-setTimeout(function() {
-  // .eq is for marked's annoying parser
-  onSlideWithElementShown($("#realisationDemo").eq(0)[0], resolutionDemo.fromHook)
-});
+// .eq is for marked's annoying parser
+onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
+  resolutionDemo.fromHook.apply(null, arguments);
+})
 </script>
 
 ##  

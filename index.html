@@ -12,6 +12,7 @@
 
   <!-- demos -->
   <link rel="stylesheet" href="js/d3-contexts-explained.css">
+  <link rel="stylesheet" href="experiments/style.css">
 
   <!-- for live coding -->
   <link rel="stylesheet" href="js/little-console.css" id="theme">
@@ -31,9 +32,7 @@
   asyncScript(('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js');
   </script>
 
-  <script src="js/revealHooks.js">
-    
-  </script>
+  <script src="js/revealHooks.js"></script>
 
 </head>
 
@@ -531,13 +530,13 @@ function renderHeatMap(data) {
 </section>
 
 <section  class=""><h2 id="-"> </h2>
-<svg id='realisationDemo' class="demo"></svg>
+<svg id='resolutionDemo' class="demo"></svg>
 
 <script>
-setTimeout(function() {
-  // .eq is for marked's annoying parser
-  onSlideWithElementShown($("#realisationDemo").eq(0)[0], resolutionDemo.fromHook)
-});
+// .eq is for marked's annoying parser
+onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
+  resolutionDemo.fromHook.apply(null, arguments);
+})
 </script>
 
 </section>
@@ -562,7 +561,6 @@ setTimeout(function() {
 <script src="reveal/js/reveal.min.js"></script>
 <script src="js/revealConfig.js"></script>
 
-<script src="js/revealHooks.js"></script>
 
 <!-- demos -->
 <script src=js/d3-contexts-explained.js></script>

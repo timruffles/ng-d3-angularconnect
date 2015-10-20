@@ -1,11 +1,31 @@
-<h1>Booted '{{ ctrl.name }}'</h1> 
-<h2>Digest count: {{ ctrl.totalDigests }}</h2>
 <form name='dataForm'>
+  <label>
+    Activity: 
+  </label>
+  <input name=name
+     ng-model="ctrl.data.name"
+     required
+     >
+
+  <label>
+    Risk {{ ctrl.data.risk | percent }} 
+  </label>
   <input type="range" 
          name="data"
-         ng-model="ctrl.data.value"
+         ng-model="ctrl.data.risk"
          ng-change='ctrl.updated()'
-         integer-value
-         >
-  {{ ctrl.data.value }}
+         is-ratio
+       >
+  <label>
+    Reward {{ ctrl.data.reward | percent }} 
+  </label>
+  <input type="range" 
+         name="data"
+         ng-model="ctrl.data.reward"
+         ng-change='ctrl.updated()'
+         step=0.01
+         min=0
+         max=100
+         is-ratio
+       >
 </form>

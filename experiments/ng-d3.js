@@ -85,6 +85,7 @@ d3.selection.prototype.angularise = function(fn) {
 
          if(opts.controller) {
            localServices.$scope = scope;
+           console.log(localServices);
            var ctrl = $controller(opts.controller, localServices);
            scope[opts.controllerAs] = ctrl;
          }
