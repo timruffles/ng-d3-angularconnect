@@ -16,6 +16,8 @@
 ## Then I saw the code
 {tags:{state:"bad"}}
 
+![huge javascript file](img/huge-javascript-file.png)
+
 ## My year has been peacemaking
 
 ## Between a mutual friend, and a new face

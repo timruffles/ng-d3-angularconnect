@@ -81,6 +81,9 @@ Reveal.addEventListener('ready', function( event ) {
 
   angular.bootstrap(document.body, ["slides"]);
 
+  // see revealHooks.js
+  runRevealListeners();
+
 });
   
 })();

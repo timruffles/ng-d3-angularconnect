@@ -34,3 +34,15 @@
 
 ## Flip the hierarchy!
 
+##  
+
+<svg id='realisationDemo' class="demo"></svg>
+
+<script>
+setTimeout(function() {
+  // .eq is for marked's annoying parser
+  onSlideWithElementShown($("#realisationDemo").eq(0)[0], resolutionDemo.fromHook)
+});
+</script>
+
+##  

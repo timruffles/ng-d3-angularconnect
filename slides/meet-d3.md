@@ -82,14 +82,16 @@ d3.selectAll("h3")
 ## e.g
 
 <script type=eg code-sample>
-  <div class=estimate>build chart: tomorrow</div>
-  <div class=estimate>fix bug: in 20 minutes</div>
+  <svg id=join width=600 height=220>
+    <circle r=50 cx=250 cy=110  />
+    <circle r=50 cx=450 cy=110  />
+  </svg>
 </script>
 
 <div class=little-console></div>
 
 <script type=cheat>
-  d3.selectAll(".estimate").data([{risk:0.9},{risk:0.1}]).style("color", (d) => d.risk > 0.5 ? "red" : "green");
+  d3.selectAll("#join circle").data([{risk:0.9},{risk:0.1}]).attr("fill", (d) => d.risk > 0.5 ? "red" : "green");
 </script>
 
 ## Synchronising data and screen
@@ -200,5 +202,14 @@ function renderHeatMap(data) {
   .call(renderNodes, laidOut)
 } 
 ```
+
+## d3's big ideas
+
+## d3 ≃ jQuery + data = data-join
+{class: "big-text"}
+
+## Sync via `enter()`, update and `exit()`
+
+## Composition + collaboration (from idempotency)
 
 

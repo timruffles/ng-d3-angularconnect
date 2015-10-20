@@ -1,10 +1,16 @@
 ## Using d3 + ng
 {tags:{state:"title"}}
 
+## How to use D3's powers
+
+## Without 3,269 line file of doom
+
+## Or losing benefits of Angular?
+
 ## Attempt one
 {tags:{state:"subtitle"}}
 
-## Best practice
+## I brought 'best practice'
 
 ## `ng` view concerns live in?
 
@@ -42,7 +48,7 @@
 ## But...
 {tags:{state:"bad"}}
 
-## We had more ambition
+## They were not impressed
 
 ## Remember collaboration?
 
@@ -50,7 +56,7 @@
 
 ## Same elements
 
-## First clash
+## First d3 + ng bust up
 {tags:{state:"bad"}}
 
 ## The selfishness of `<components>`
@@ -58,6 +64,7 @@
 ## `<components>` won't share their DOM
 
 ## No overlapping behaviours
+{todo: "ugly"}
 
 ![overlap](img/oo.png)
 
@@ -115,13 +122,13 @@ DOM nodes accessible to all directives
 ## No isolate...
 {todo: "show dupe isolate error"}
 
-## Not idiomatic
+![no dupes](img/no-dupes.png)
 
-Too many WTFs from people new to the team
+## Too many WTFs from team
 
-## Gain collaboration, loses composability
+## Gain collaboration, still no composition
 
-## But...
+## So...
 {tags:{state:"bad"}}
 
 

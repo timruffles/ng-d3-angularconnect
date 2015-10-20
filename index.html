@@ -30,6 +30,11 @@
 
   asyncScript(('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js');
   </script>
+
+  <script src="js/revealHooks.js">
+    
+  </script>
+
 </head>
 
 <body>
@@ -59,6 +64,7 @@
 </section>
 
 <section data-state='bad' class=""><h2 id="then-i-saw-the-code">Then I saw the code</h2>
+<p><img src="img/huge-javascript-file.png" alt="huge javascript file"></p>
 </section>
 
 <section  class=""><h2 id="my-year-has-been-peacemaking">My year has been peacemaking</h2>
@@ -168,14 +174,16 @@
 
 <section  class=""><h2 id="e-g">e.g</h2>
 <script type=eg code-sample>
-  <div class=estimate>build chart: tomorrow</div>
-  <div class=estimate>fix bug: in 20 minutes</div>
+  <svg id=join width=600 height=220>
+    <circle r=50 cx=250 cy=110  />
+    <circle r=50 cx=450 cy=110  />
+  </svg>
 </script>
 
 <div class=little-console></div>
 
 <script type=cheat>
-  d3.selectAll(".estimate").data([{risk:0.9},{risk:0.1}]).style("color", (d) => d.risk > 0.5 ? "red" : "green");
+  d3.selectAll("#join circle").data([{risk:0.9},{risk:0.1}]).attr("fill", (d) => d.risk > 0.5 ? "red" : "green");
 </script>
 
 </section>
@@ -286,13 +294,34 @@ function renderHeatMap(data) {
 </code></pre>
 </section>
 
+<section  class=""><h2 id="d3-s-big-ideas">d3&#39;s big ideas</h2>
+</section>
+
+<section  class="big-text"><h2 id="d3-jquery-data-data-join">d3 ≃ jQuery + data = data-join</h2>
+</section>
+
+<section  class=""><h2 id="sync-via-enter-update-and-exit-">Sync via <code>enter()</code>, update and <code>exit()</code></h2>
+</section>
+
+<section  class=""><h2 id="composition-collaboration-from-idempotency-">Composition + collaboration (from idempotency)</h2>
+</section>
+
 <section data-state='title' class=""><h2 id="using-d3-ng">Using d3 + ng</h2>
+</section>
+
+<section  class=""><h2 id="how-to-use-d3-s-powers">How to use D3&#39;s powers</h2>
+</section>
+
+<section  class=""><h2 id="without-3-269-line-file-of-doom">Without 3,269 line file of doom</h2>
+</section>
+
+<section  class=""><h2 id="or-losing-benefits-of-angular-">Or losing benefits of Angular?</h2>
 </section>
 
 <section data-state='subtitle' class=""><h2 id="attempt-one">Attempt one</h2>
 </section>
 
-<section  class=""><h2 id="best-practice">Best practice</h2>
+<section  class=""><h2 id="i-brought-best-practice-">I brought &#39;best practice&#39;</h2>
 </section>
 
 <section  class=""><h2 id="-ng-view-concerns-live-in-"><code>ng</code> view concerns live in?</h2>
@@ -336,7 +365,7 @@ function renderHeatMap(data) {
 <section data-state='bad' class=""><h2 id="but-">But...</h2>
 </section>
 
-<section  class=""><h2 id="we-had-more-ambition">We had more ambition</h2>
+<section  class=""><h2 id="they-were-not-impressed">They were not impressed</h2>
 </section>
 
 <section  class=""><h2 id="remember-collaboration-">Remember collaboration?</h2>
@@ -348,7 +377,7 @@ function renderHeatMap(data) {
 <section  class=""><h2 id="same-elements">Same elements</h2>
 </section>
 
-<section data-state='bad' class=""><h2 id="first-clash">First clash</h2>
+<section data-state='bad' class=""><h2 id="first-d3-ng-bust-up">First d3 + ng bust up</h2>
 </section>
 
 <section  class=""><h2 id="the-selfishness-of-components-">The selfishness of <code>&lt;components&gt;</code></h2>
@@ -413,16 +442,16 @@ function renderHeatMap(data) {
 </section>
 
 <section  class=""><h2 id="no-isolate-">No isolate...</h2>
+<p><img src="img/no-dupes.png" alt="no dupes"></p>
 </section>
 
-<section  class=""><h2 id="not-idiomatic">Not idiomatic</h2>
-<p>Too many WTFs from people new to the team</p>
+<section  class=""><h2 id="too-many-wtfs-from-team">Too many WTFs from team</h2>
 </section>
 
-<section  class=""><h2 id="gain-collaboration-loses-composability">Gain collaboration, loses composability</h2>
+<section  class=""><h2 id="gain-collaboration-still-no-composition">Gain collaboration, still no composition</h2>
 </section>
 
-<section data-state='bad' class=""><h2 id="but-">But...</h2>
+<section data-state='bad' class=""><h2 id="so-">So...</h2>
 </section>
 
 <section data-state='bad' class=""><h2 id="i-had-a-moment-of-doubt">I had a moment of doubt</h2>
@@ -501,11 +530,27 @@ function renderHeatMap(data) {
 <section  class=""><h2 id="flip-the-hierarchy-">Flip the hierarchy!</h2>
 </section>
 
+<section  class=""><h2 id="-"> </h2>
+<svg id='realisationDemo' class="demo"></svg>
+
+<script>
+setTimeout(function() {
+  // .eq is for marked's annoying parser
+  onSlideWithElementShown($("#realisationDemo").eq(0)[0], resolutionDemo.fromHook)
+});
+</script>
+
+</section>
+
+<section  class=""><h2 id="-"> </h2>
+</section>
+
 </div>
 </div>
 
 <!-- demo code -->
 <script src="js/jquery.js"></script>
+<script src="js/lodash.js"></script>
 <script src="js/angular.js"></script>
 <script src="js/d3.js"></script>
 <script src="js/demo.js"></script>
@@ -517,8 +562,12 @@ function renderHeatMap(data) {
 <script src="reveal/js/reveal.min.js"></script>
 <script src="js/revealConfig.js"></script>
 
+<script src="js/revealHooks.js"></script>
+
 <!-- demos -->
 <script src=js/d3-contexts-explained.js></script>
+<script src=experiments/ng-d3.js></script>
+<script src=experiments/app.js></script>
 
 <!-- live coding -->
 <script src=js/little-console.js></script>
