@@ -42,10 +42,11 @@ d3.selectAll(".bars")
 ## Data -> visual
 
 ```
-function aD3Callback(data) {
-  // transform data value, into visual value
-  return data.count + "px"
-}
+d3.selectAll(".bars")
+.style("background",
+  function(data) {
+    return data.risk > 0.9 ? "red" : "green";
+  });
 ```
 
 ## ...and where does the data come from?
@@ -79,13 +80,13 @@ d3.selectAll("h3")
   d3.selectAll("#join circle").data([{risk:0.9},{risk:0.1}]).attr("fill", (d) => d.risk > 0.5 ? "red" : "green");
 </script>
 
-## Synchronising data and screen
+## Sync data & DOM
 
-- updating 
-- adding
+- updating existing DOM 
+- adding new nodes
 - removing
 
-## Synchronising data and elements
+## Sync
 
 ```javascript
 var update = d3.selectAll('.x').data(data);
@@ -102,10 +103,14 @@ var circleData = [
   {id: 1}, {id: 2}, {id: 3}
 ];
 
-renderCircles(circleData);
+// renderCircles
 ```
 
 <div class=little-console></div>
+
+<script type=cheat>
+  renderCircles(circleData);
+</script>
 
 <script>
 onSlideWithElementShown(document.getElementById("contextsDemo"), function() {
@@ -209,4 +214,6 @@ onSlideWithElementShown(document.getElementById("collaborationDemo"), function()
 ## `{data}` + `<DOM>`
 
 ## Idempotency = DOM is predictable
+
+## Idempotency = collaboration via <br>  `f · g · h`
 

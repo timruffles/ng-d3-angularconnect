@@ -17,8 +17,6 @@ function contextsDemo(el, slideEl, bbox) {
   window.circleData = data;
 
 
-  setTimeout(render.bind(null, data), 125);
-
   d3.select(el).attr({
     width: bbox.width,
   })

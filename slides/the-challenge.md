@@ -77,7 +77,7 @@ onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
 ## Coding `===` enabling
 {tags:{state:"title"}}
 
-## When we have ambition
+## When we have big ideas
 
 ## Let's find reasons to say
 
