@@ -73,7 +73,7 @@
 <section  class=""><h2 id="to-unite-mutual-friend-and-a-new-face">To unite mutual friend, and a new face</h2>
 </section>
 
-<section data-state='title' class=""><h2 id="angular">Angular</h2>
+<section data-state='title' class=""><h2 id="-"> </h2>
 <p><img class='offset' src="img/ng.png" alt="angular js shield logo"></p>
 </section>
 
@@ -83,10 +83,11 @@
 <section  class="undefined"><h2 id="big-ideas">Big ideas</h2>
 </section>
 
-<section data-state='title' class=""><h2 id="d3">D3</h2>
+<section data-state='title' class=""><h2 id="-"> </h2>
+<p><img class='offset' src="img/d3.svg" width=748 alt="d3 logo"></p>
 </section>
 
-<section  class=""><h2 id="builds-cool-things">Builds cool things</h2>
+<section  class=""><h2 id="enables-cool-things">Enables cool things</h2>
 <svg id=d3Demo></svg>
 
 <script>
@@ -318,45 +319,13 @@ onSlideWithElementShown(document.getElementById("collaborationDemo"), function()
 
 </section>
 
-<section  class=""><h2 id="how-">How?</h2>
+<section  class=""><h2 id="d3-components-function-over-2-data-sets">d3 components = function over 2 data-sets</h2>
 </section>
 
-<section  class=""><h2 id="idempotent-components">Idempotent components</h2>
-<pre><code>function xyPlot() {
-
-  plot.itemClass = setterGetter();
-
-  return plot(selection, data) {
-    selection.selectAll(&quot;.&quot; + plot.itemClass())
-    .data(data)
-    // ... etc
-  }
-}
-</code></pre></section>
-
-<section  class=""><h2 id="d3-components-over-2-data-sets">d3 components = ƒ over 2 data-sets</h2>
+<section  class=""><h2 id="-data-dom-"><code>{data}</code> + <code>&lt;DOM&gt;</code></h2>
 </section>
 
-<section  class=""><h2 id="data-elements">Data + elements</h2>
-</section>
-
-<section  class=""><h2 id="idempotency-simplicity">Idempotency = simplicity</h2>
-<pre><code class="lang-javascript">
-// our renderers are simple functions
-var xy = xyPlot().itemClass(&quot;.point&quot;);
-var bar = barChart().itemClass(&quot;.point&quot;);
-
-var active = xy;
-var data = [{id: 1}, {id: 2}, {id: 3}];
-
-function render() {
-  d3.select(&quot;#demo&quot;)
-  .call(active, data)
-}
-</code></pre>
-</section>
-
-<section  class=""><h2 id="idempotency-dom-is-just-data">Idempotency = DOM is just data</h2>
+<section  class=""><h2 id="idempotency-dom-is-predictable">Idempotency = DOM is predictable</h2>
 </section>
 
 <section data-state='title' class=""><h2 id="using-d3-ng">Using d3 + ng</h2>
@@ -421,6 +390,9 @@ function render() {
 
 </section>
 
+<section  class=""><h2 id="-ngmodelcontroller-ftw-"><code>ngModelController</code> FTW!</h2>
+</section>
+
 <section  class=""><h2 id="no-giant-files-">No giant files!</h2>
 </section>
 
@@ -438,9 +410,10 @@ function render() {
 </section>
 
 <section  class=""><h2 id="why-do-all-the-apps-i-build-look-the-same-">Why do all the apps I build look the same?</h2>
+<p><img src="img/hierarchy.png" alt="hierarchy"></p>
 </section>
 
-<section  class=""><h2 id="why-did-people-new-to-d3-ng-build-cooler-stuff-than-me-">Why did people new to D3 + ng build cooler stuff than me?</h2>
+<section  class=""><h2 id="how-are-newbies-building-cooler-apps-">How are newbies building cooler apps?</h2>
 </section>
 
 <section  class=""><h2 id="something-was-wrong-with-me">Something was wrong with me</h2>
@@ -452,16 +425,10 @@ function render() {
 <section data-state='bad' class=""><h2 id="programmer-vision">Programmer vision</h2>
 </section>
 
-<section  class=""><h2 id="a-world-of-hierarchy">A world of hierarchy</h2>
+<section  class=""><h2 id="where-ambition-was-impossible">Where ambition was impossible</h2>
 </section>
 
-<section  class=""><h2 id="-and-rules">...and rules</h2>
-</section>
-
-<section  class=""><h2 id="where-simple-things-were-impossible">Where simple things were impossible</h2>
-</section>
-
-<section  class=""><h2 id="where-building-the-right-way-building-cool-things">Where building the &#39;right way&#39; &gt; building cool things</h2>
+<section  class=""><h2 id="because-the-right-way-cool-things">Because the &#39;right way&#39; &gt; cool things</h2>
 </section>
 
 <section data-state='bad' class=""><h2 id="was-i-becoming-an-enterprise-architect-">Was I becoming an enterprise architect?!</h2>

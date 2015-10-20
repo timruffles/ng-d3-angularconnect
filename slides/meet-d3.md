@@ -204,43 +204,9 @@ onSlideWithElementShown(document.getElementById("collaborationDemo"), function()
 })
 </script>
 
-## How?
+## d3 components = function over 2 data-sets
 
-## Idempotent components
+## `{data}` + `<DOM>`
 
-```
-function xyPlot() {
-
-  plot.itemClass = setterGetter();
-
-  return plot(selection, data) {
-    selection.selectAll("." + plot.itemClass())
-    .data(data)
-    // ... etc
-  }
-}
-```
-
-## d3 components = ƒ over 2 data-sets
-
-## Data + elements
-
-## Idempotency = simplicity
-
-```javascript
-
-// our renderers are simple functions
-var xy = xyPlot().itemClass(".point");
-var bar = barChart().itemClass(".point");
-
-var active = xy;
-var data = [{id: 1}, {id: 2}, {id: 3}];
-
-function render() {
-  d3.select("#demo")
-  .call(active, data)
-} 
-```
-
-## Idempotency = DOM is just data
+## Idempotency = DOM is predictable
 

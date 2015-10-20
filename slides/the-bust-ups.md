@@ -50,6 +50,8 @@
   </form>
 </script>
 
+## `ngModelController` FTW!
+
 ## No giant files!
 
 ## But...

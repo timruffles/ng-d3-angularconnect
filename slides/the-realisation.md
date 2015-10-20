@@ -2,9 +2,11 @@
 {tags:{state:"bad"}}
 
 ## Why do all the apps I build look the same?
-{todo: "square world"}
 
-## Why did people new to D3 + ng build cooler stuff than me?
+![hierarchy](img/hierarchy.png)
+
+
+## How are newbies building cooler apps?
 
 ## Something was wrong with me
 
@@ -13,13 +15,9 @@
 ## Programmer vision
 {tags:{state:"bad"}}
 
-## A world of hierarchy
+## Where ambition was impossible
 
-## ...and rules
-
-## Where simple things were impossible
-
-## Where building the 'right way' > building cool things
+## Because the 'right way' > cool things
 
 ## Was I becoming an enterprise architect?!
 {tags:{state:"bad"}}

@@ -22,7 +22,7 @@
 
 ## To unite mutual friend, and a new face
 
-## Angular
+## 
 {tags:{state:"title"}}
 
 <img class='offset' src="img/ng.png" alt="angular js shield logo">
@@ -33,10 +33,12 @@
 
 "HTML for web apps"
 
-## D3
-{tags:{state:"title"}, todo: "add logo"}
+## 
+{tags:{state:"title"}}
 
-## Builds cool things
+<img class='offset' src="img/d3.svg" width=748 alt="d3 logo">
+
+## Enables cool things
 
 <svg id=d3Demo></svg>
 
