@@ -12,7 +12,7 @@ body {
   transition: transform 0.8s ease, background 0.5s !important;
 }
 
-.notitle h2 {
+.notitle > h2 {
   display: none;
 }
 

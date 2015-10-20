@@ -22,7 +22,7 @@
     "mocha": "^1.21.3"
   },
   "scripts": {
-    "watch": "nodemon --ext js,md,html,markdown -w slides -w index.template.md -w slides-theme/ -w mplates/  --exec 'npm run slides'",
+    "watch": "nodemon --ext js,md,html,markdown -w slides -w index.template.md -w slides-theme/ -w templates  --exec 'npm run slides'",
     "slides": "./tools/build-template.sh slides < index.template.md  > index.html"
   },
   "repository": {

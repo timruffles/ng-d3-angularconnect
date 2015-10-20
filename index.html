@@ -212,25 +212,47 @@ var exit = update.exit();
 </code></pre>
 </section>
 
+<section  class=""><h2 id="-"> </h2>
+<svg id="contextsDemo" height=200></svg>
+
+<pre><code>var circleData = [
+  {id: 1}, {id: 2}, {id: 3}
+];
+
+renderCircles(circleData);
+</code></pre><div class=little-console></div>
+
+<script>
+onSlideWithElementShown(document.getElementById("contextsDemo"), function() {
+  contextsDemo.apply(null, arguments);
+})
+</script>
+
+</section>
+
 <section  class="notitle"><h2 id="contexts-explained">Contexts explained</h2>
 <div class=contexts-explained>
 
   <div class=situation>
-    <h2>Selection</h2>
-    <h3>Elements</h3>
+    <h3 class=code>.selectAll(</h3>
     <div class='elements track'></div>
-    <button class=addEl>Add element</button>
-    <button class=delEl>Remove element</button>
-    <h3 class=code>.data()</h3>
+    <h3 class=code>)</h3>
+    <button class=addEl>Add el</button>
+    <button class=delEl>Remove el</button>
+    <h3 class=code>.data(</h3>
     <div class='data track'></div>
+    <h3 class=code>)</h3>
     <button class=addData>Add data</button>
     <button class=delData>Remove data</button>
   </div>
 
+  <div class='eq'>
+    =
+  </div>
+
   <div class=contexts>
-    <h2>d3 Contexts</h2>
     <div>
-      <h3 class=code>enter()</h3>
+      <h3 class=code>.enter()</h3>
       <div class='enter track'></div>
     </div>
     <div>
@@ -238,7 +260,7 @@ var exit = update.exit();
       <div class='update track'></div>
     </div>
     <div>
-      <h3 class=code>exit()</h3>
+      <h3 class=code>.exit()</h3>
       <div class='exit track'></div>
     </div>
   </div>
@@ -269,17 +291,14 @@ render(elements2, data1) // elements1
 </section>
 
 <section  class=""><h2 id="composition">Composition</h2>
-<pre><code class="lang-javascript">var drawLineChart = lineChart();
-var drawAxis = axis();
-var addLabels = labelGenerator();
+<svg id="compositionDemo"></svg>
 
-function renderXyPlot(data) {
-  d3.select(&quot;#chart&quot;)
-  .call(drawLineChart, data)
-  .call(drawAxis, data)
-  .call(addLabels, data)
-}
-</code></pre>
+<script>
+onSlideWithElementShown(document.getElementById("compositionDemo"), function() {
+  compositionDemo.apply(null, arguments);
+})
+</script>
+
 </section>
 
 <section  class=""><h2 id="collaboration">Collaboration</h2>
@@ -564,21 +583,23 @@ onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
 <script src="js/demo.js"></script>
 <script src="js/DonutChartCtrl.js"></script>
 
-<!-- reveal -->
-<script src="reveal/lib/js/head.min.js"></script>
-<script src="reveal/plugin/highlight/highlight.js"></script>
-<script src="reveal/js/reveal.min.js"></script>
-<script src="js/revealConfig.js"></script>
-
 
 <!-- demos -->
 <script src=js/d3-contexts-explained.js></script>
 <script src=js/sectorHistogram.js></script>
 <script src=experiments/ng-d3.js></script>
 <script src=experiments/app.js></script>
+<script src=js/compositionDemo.js></script>
+<script src=js/contextsDemo.js></script>
 
 <!-- live coding -->
 <script src=js/little-console.js></script>
 <script src=js/showConsoles.js></script>
+
+<!-- reveal -->
+<script src="reveal/lib/js/head.min.js"></script>
+<script src="reveal/plugin/highlight/highlight.js"></script>
+<script src="reveal/js/reveal.js"></script>
+<script src="js/revealConfig.js"></script>
 
 </body>

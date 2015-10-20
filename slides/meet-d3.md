@@ -95,27 +95,51 @@ var enter = update.enter();
 var exit = update.exit();
 ```
 
+## 
+
+<svg id="contextsDemo" height=200></svg>
+
+```
+var circleData = [
+  {id: 1}, {id: 2}, {id: 3}
+];
+
+renderCircles(circleData);
+```
+
+<div class=little-console></div>
+
+<script>
+onSlideWithElementShown(document.getElementById("contextsDemo"), function() {
+  contextsDemo.apply(null, arguments);
+})
+</script>
+
 ## Contexts explained
 {class:"notitle", todo: "remove title"}
 
 <div class=contexts-explained>
 
   <div class=situation>
-    <h2>Selection</h2>
-    <h3>Elements</h3>
+    <h3 class=code>.selectAll(</h3>
     <div class='elements track'></div>
-    <button class=addEl>Add element</button>
-    <button class=delEl>Remove element</button>
-    <h3 class=code>.data()</h3>
+    <h3 class=code>)</h3>
+    <button class=addEl>Add el</button>
+    <button class=delEl>Remove el</button>
+    <h3 class=code>.data(</h3>
     <div class='data track'></div>
+    <h3 class=code>)</h3>
     <button class=addData>Add data</button>
     <button class=delData>Remove data</button>
   </div>
 
+  <div class='eq'>
+    =
+  </div>
+
   <div class=contexts>
-    <h2>d3 Contexts</h2>
     <div>
-      <h3 class=code>enter()</h3>
+      <h3 class=code>.enter()</h3>
       <div class='enter track'></div>
     </div>
     <div>
@@ -123,7 +147,7 @@ var exit = update.exit();
       <div class='update track'></div>
     </div>
     <div>
-      <h3 class=code>exit()</h3>
+      <h3 class=code>.exit()</h3>
       <div class='exit track'></div>
     </div>
   </div>
@@ -155,18 +179,13 @@ render(elements2, data1) // elements1
 
 ## Composition
 
-```javascript
-var drawLineChart = lineChart();
-var drawAxis = axis();
-var addLabels = labelGenerator();
+<svg id="compositionDemo"></svg>
 
-function renderXyPlot(data) {
-  d3.select("#chart")
-  .call(drawLineChart, data)
-  .call(drawAxis, data)
-  .call(addLabels, data)
-} 
-```
+<script>
+onSlideWithElementShown(document.getElementById("compositionDemo"), function() {
+  compositionDemo.apply(null, arguments);
+})
+</script>
 
 ## Collaboration
 
