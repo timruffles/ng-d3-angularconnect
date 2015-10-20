@@ -66,13 +66,13 @@
 <p><img src="img/huge-javascript-file.png" alt="huge javascript file"></p>
 </section>
 
-<section  class=""><h2 id="my-year-has-been-peacemaking">My year has been peacemaking</h2>
+<section  class=""><h2 id="my-year-a-quest">My year: a quest</h2>
 </section>
 
-<section  class=""><h2 id="between-a-mutual-friend-and-a-new-face">Between a mutual friend, and a new face</h2>
+<section  class=""><h2 id="to-unite-mutual-friend-and-a-new-face">To unite mutual friend, and a new face</h2>
 </section>
 
-<section data-state='title' class=""><h2 id="our-friend-ng-">Our friend <code>ng</code></h2>
+<section data-state='title' class=""><h2 id="angular">Angular</h2>
 <p><img class='offset' src="img/ng.png" alt="angular js shield logo"></p>
 </section>
 
@@ -83,6 +83,30 @@
 </section>
 
 <section data-state='title' class=""><h2 id="d3">D3</h2>
+</section>
+
+<section  class=""><h2 id="builds-cool-things">Builds cool things</h2>
+<svg id=d3Demo></svg>
+
+<script>
+onSlideWithElementShown(document.getElementById("d3Demo"), function(el) {
+  var histo = sectorHistogram();
+
+  function render() { 
+    var randomData = d3.range(1000).map(d3.random.irwinHall(10));
+
+    d3.select(el)
+    .call(histo, randomData)
+  }
+
+  setTimeout(render, 125);
+
+  return function() {
+    d3.select(el).html("");
+  };
+})
+</script>
+
 </section>
 
 <section  class=""><h2 id="-just-a-library-">&#39;Just a library&#39;</h2>
@@ -133,25 +157,11 @@
   });
 </code></pre></section>
 
-<section  class=""><h2 id="-data-"><code>(data, ...) {</code></h2>
-<ul>
-<li>the data for an element</li>
-</ul>
-</section>
-
 <section  class=""><h2 id="data-visual">Data -&gt; visual</h2>
 <pre><code>function aD3Callback(data) {
   // transform data value, into visual value
   return data.count + &quot;px&quot;
 }
-</code></pre></section>
-
-<section  class=""><h2 id="e-g">e.g</h2>
-<pre><code>d3.select(&quot;#root&quot;)
-  .selectAll(&quot;div&quot;)
-  .style(&quot;width&quot;, function(d) {
-    return d.count + &quot;px&quot;;
-  });
 </code></pre></section>
 
 <section  class=""><h2 id="-and-where-does-the-data-come-from-">...and where does the data come from?</h2>
@@ -533,7 +543,6 @@ function renderHeatMap(data) {
 <svg id='resolutionDemo' class="demo"></svg>
 
 <script>
-// .eq is for marked's annoying parser
 onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
   resolutionDemo.fromHook.apply(null, arguments);
 })
@@ -564,6 +573,7 @@ onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
 
 <!-- demos -->
 <script src=js/d3-contexts-explained.js></script>
+<script src=js/sectorHistogram.js></script>
 <script src=experiments/ng-d3.js></script>
 <script src=experiments/app.js></script>
 

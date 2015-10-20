@@ -1,5 +1,4 @@
-function SectorHistogram(opts) {
-    var el = opts.el;
+function sectorHistogram() {
 
     var width = 800;
     var height = 500;
@@ -18,21 +17,27 @@ function SectorHistogram(opts) {
     var xOffset = (width - 2*r) / 2 + r;
     var yOffset = (height - 2*r) / 2 + r;
 
-    function render() {
+    return render;
+
+    function render(selection, rawData) {
       
       // create our histogram layout and configure
       var histogram = d3.layout.histogram()
           .bins(BINS);
 
       // apply it to our data
-      var data = histogram(opts.data);
+      var data = histogram(rawData);
 
       // height of bins becomes outer-radius of sector
       var y = d3.scale.linear()
           .domain(d3.extent(data, function(d) { return d.y }))
-          .range([0, r]);
+          .range([15, r]);
 
-      var root = d3.select(el)
+      var root = selection
+          .attr({
+            width: width,
+            height: height,
+          })
           .append("g")
           .attr("transform", "translate(" + xOffset + "," + yOffset + ")")
 
@@ -45,13 +50,17 @@ function SectorHistogram(opts) {
       arcs.sort(function(a,b) { return a.startAngle - b.startAngle });
 
       // our arc drawing function
-      var arc = d3.root.arc()
+      var arc = d3.svg.arc()
         .innerRadius(DONUT_R);
 
-      root.selectAll("path")
+      var update = root.selectAll("path")
           .data(arcs)
+
+      update
           .enter()
           .append("path")
+
+      update
           .style("fill", function(_d, i) {
             return colors(i);
           })

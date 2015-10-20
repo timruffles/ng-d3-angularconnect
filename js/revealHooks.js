@@ -25,12 +25,12 @@
       function check(event) {
         if($.contains(event.currentSlide, el)) {
           var hide = fn(el, event.currentSlide) || function() {};
-          Reveal.addEventListener('fragmenthidden', cleanup);
+          Reveal.addEventListener('slidechanged', cleanup);
         }
 
         function cleanup() {
           hide();
-          Reveal.removeEventListener('fragmenthidden', cleanup);
+          Reveal.removeEventListener('slidechanged', cleanup);
         }
       }
     }

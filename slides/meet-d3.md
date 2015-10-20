@@ -40,11 +40,6 @@ d3.selectAll(".bars")
   });
 ```
 
-## `(data, ...) {`
-
-- the data for an element
-
-
 ## Data -> visual
 
 ```
@@ -54,15 +49,6 @@ function aD3Callback(data) {
 }
 ```
 
-## e.g
-
-```
-d3.select("#root")
-  .selectAll("div")
-  .style("width", function(d) {
-    return d.count + "px";
-  });
-```
 ## ...and where does the data come from?
 
 ## `data()`
@@ -101,6 +87,7 @@ d3.selectAll("h3")
 - removing
 
 ## Synchronising data and elements
+{ todo: "demo" }
 
 ```javascript
 var update = d3.selectAll('.x').data(data);

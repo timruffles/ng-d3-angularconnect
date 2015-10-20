@@ -18,11 +18,11 @@
 
 ![huge javascript file](img/huge-javascript-file.png)
 
-## My year has been peacemaking
+## My year: a quest
 
-## Between a mutual friend, and a new face
+## To unite mutual friend, and a new face
 
-## Our friend `ng`
+## Angular
 {tags:{state:"title"}}
 
 <img class='offset' src="img/ng.png" alt="angular js shield logo">
@@ -34,7 +34,30 @@
 "HTML for web apps"
 
 ## D3
-{tags:{state:"title"}}
+{tags:{state:"title"}, todo: "add logo"}
+
+## Builds cool things
+
+<svg id=d3Demo></svg>
+
+<script>
+onSlideWithElementShown(document.getElementById("d3Demo"), function(el) {
+  var histo = sectorHistogram();
+
+  function render() { 
+    var randomData = d3.range(1000).map(d3.random.irwinHall(10));
+
+    d3.select(el)
+    .call(histo, randomData)
+  }
+
+  setTimeout(render, 125);
+
+  return function() {
+    d3.select(el).html("");
+  };
+})
+</script>
 
 ## 'Just a library'
 

@@ -39,7 +39,6 @@
 <svg id='resolutionDemo' class="demo"></svg>
 
 <script>
-// .eq is for marked's annoying parser
 onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
   resolutionDemo.fromHook.apply(null, arguments);
 })
