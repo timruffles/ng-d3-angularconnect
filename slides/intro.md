@@ -18,7 +18,7 @@
 
 ![huge javascript file](img/huge-javascript-file.png)
 
-## My year: a quest
+## A quest!
 
 ## To unite mutual friend, and a new face
 

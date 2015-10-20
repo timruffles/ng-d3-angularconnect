@@ -7,7 +7,10 @@
 
 ## Something was wrong with me
 
+## I self diagnosed with...
+
 ## Programmer vision
+{tags:{state:"bad"}}
 
 ## A world of hierarchy
 
@@ -15,9 +18,14 @@
 
 ## Where simple things were impossible
 
-## Where doing it the 'right way'
+## Where building the 'right way' > building cool things
 
-## Was more important than doing it at all
+## Was I becoming an enterprise architect?!
+{tags:{state:"bad"}}
+
+![uml, ugh](img/uml.png)
+
+## Don't let it end like this...
 
 
 

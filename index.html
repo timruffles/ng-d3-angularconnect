@@ -66,7 +66,7 @@
 <p><img src="img/huge-javascript-file.png" alt="huge javascript file"></p>
 </section>
 
-<section  class=""><h2 id="my-year-a-quest">My year: a quest</h2>
+<section  class=""><h2 id="a-quest-">A quest!</h2>
 </section>
 
 <section  class=""><h2 id="to-unite-mutual-friend-and-a-new-face">To unite mutual friend, and a new face</h2>
@@ -290,17 +290,6 @@ render(elements2, data1) // elements1
 <section  class=""><h2 id="so-what-">So what?</h2>
 </section>
 
-<section  class=""><h2 id="composition">Composition</h2>
-<svg id="compositionDemo"></svg>
-
-<script>
-onSlideWithElementShown(document.getElementById("compositionDemo"), function() {
-  compositionDemo.apply(null, arguments);
-})
-</script>
-
-</section>
-
 <section  class=""><h2 id="collaboration">Collaboration</h2>
 <pre><code class="lang-javascript">
 function renderXyPlot(data) {
@@ -331,7 +320,7 @@ function renderHeatMap(data) {
 <section  class=""><h2 id="sync-via-enter-update-and-exit-">Sync via <code>enter()</code>, update and <code>exit()</code></h2>
 </section>
 
-<section  class=""><h2 id="composition-collaboration-from-idempotency-">Composition + collaboration (from idempotency)</h2>
+<section  class=""><h2 id="collaboration-from-idempotency-">Collaboration (from idempotency)</h2>
 </section>
 
 <section data-state='title' class=""><h2 id="using-d3-ng">Using d3 + ng</h2>
@@ -344,9 +333,6 @@ function renderHeatMap(data) {
 </section>
 
 <section  class=""><h2 id="or-losing-benefits-of-angular-">Or losing benefits of Angular?</h2>
-</section>
-
-<section data-state='subtitle' class=""><h2 id="attempt-one">Attempt one</h2>
 </section>
 
 <section  class=""><h2 id="i-brought-best-practice-">I brought &#39;best practice&#39;</h2>
@@ -390,6 +376,9 @@ function renderHeatMap(data) {
 <section  class=""><h2 id="e-g-cool-inputs">e.g cool inputs</h2>
 </section>
 
+<section  class=""><h2 id="no-giant-files-">No giant files!</h2>
+</section>
+
 <section data-state='bad' class=""><h2 id="but-">But...</h2>
 </section>
 
@@ -397,12 +386,7 @@ function renderHeatMap(data) {
 </section>
 
 <section  class=""><h2 id="remember-collaboration-">Remember collaboration?</h2>
-</section>
-
-<section  class=""><h2 id="seamless-transitions-between-components">Seamless transitions between components</h2>
-</section>
-
-<section  class=""><h2 id="same-elements">Same elements</h2>
+<p><img src="img/transitions-b.gif" alt="transitions"></p>
 </section>
 
 <section data-state='bad' class=""><h2 id="first-d3-ng-bust-up">First d3 + ng bust up</h2>
@@ -433,53 +417,20 @@ function renderHeatMap(data) {
 <p>Alan Perlis</p>
 </section>
 
-<section  class=""><h2 id="why-different-">Why different?</h2>
-<p>D3 is idempotent, DOM is just more data</p>
+<section  class=""><h2 id="why-the-radical-difference-">Why the radical difference?</h2>
 </section>
 
-<section data-state='subtitle' class=""><h2 id="attempt-two">Attempt two</h2>
+<section  class=""><h2 id="idempotence-tames-dom">Idempotence tames DOM</h2>
 </section>
 
-<section  class=""><h2 id="stacking-attributes">Stacking attributes</h2>
+<section  class=""><h2 id="to-d3-dom-is-another-data-set">To D3, DOM is another data-set</h2>
 </section>
 
-<section  class=""><h2 id="attribute-directives">Attribute directives</h2>
-<pre><code>&lt;svg
-
-  bar-chart=&#39;{
-    data: ctrl.data,
-  }&#39;
-
-  line-graph=&#39;{
-    data: ctrl.data,
-  }&#39;
-  &gt;
-&lt;/svg&gt;
-</code></pre></section>
-
-<section data-state='good' class=""><h2 id="can-share-">Can share!</h2>
-<p>DOM nodes accessible to all directives</p>
-<pre><code>&lt;svg bar-chart line-graph&gt;
-  &lt;g class=&#39;some-data&#39;&gt;&lt;/g&gt;
-  &lt;g class=&#39;some-data&#39;&gt;&lt;/g&gt;
-  &lt;g class=&#39;some-data&#39;&gt;&lt;/g&gt;
-&lt;/svg&gt;
-</code></pre></section>
-
-<section data-state='bad' class=""><h2 id="but-">But..</h2>
-</section>
-
-<section  class=""><h2 id="no-isolate-">No isolate...</h2>
-<p><img src="img/no-dupes.png" alt="no dupes"></p>
-</section>
-
-<section  class=""><h2 id="too-many-wtfs-from-team">Too many WTFs from team</h2>
-</section>
-
-<section  class=""><h2 id="gain-collaboration-still-no-composition">Gain collaboration, still no composition</h2>
-</section>
-
-<section data-state='bad' class=""><h2 id="so-">So...</h2>
+<section  class=""><h2 id="many-functions-one-data-structure">Many functions one data-structure</h2>
+<ul>
+<li>functions = d3 components</li>
+<li>data-structure = DOM</li>
+</ul>
 </section>
 
 <section data-state='bad' class=""><h2 id="i-had-a-moment-of-doubt">I had a moment of doubt</h2>
@@ -494,7 +445,10 @@ function renderHeatMap(data) {
 <section  class=""><h2 id="something-was-wrong-with-me">Something was wrong with me</h2>
 </section>
 
-<section  class=""><h2 id="programmer-vision">Programmer vision</h2>
+<section  class=""><h2 id="i-self-diagnosed-with-">I self diagnosed with...</h2>
+</section>
+
+<section data-state='bad' class=""><h2 id="programmer-vision">Programmer vision</h2>
 </section>
 
 <section  class=""><h2 id="a-world-of-hierarchy">A world of hierarchy</h2>
@@ -506,16 +460,26 @@ function renderHeatMap(data) {
 <section  class=""><h2 id="where-simple-things-were-impossible">Where simple things were impossible</h2>
 </section>
 
-<section  class=""><h2 id="where-doing-it-the-right-way-">Where doing it the &#39;right way&#39;</h2>
+<section  class=""><h2 id="where-building-the-right-way-building-cool-things">Where building the &#39;right way&#39; &gt; building cool things</h2>
 </section>
 
-<section  class=""><h2 id="was-more-important-than-doing-it-at-all">Was more important than doing it at all</h2>
+<section data-state='bad' class=""><h2 id="was-i-becoming-an-enterprise-architect-">Was I becoming an enterprise architect?!</h2>
+<p><img src="img/uml.png" alt="uml, ugh"></p>
 </section>
 
-<section data-state='title' class=""><h2 id="the-challenge">The challenge</h2>
+<section  class=""><h2 id="don-t-let-it-end-like-this-">Don&#39;t let it end like this...</h2>
+</section>
+
+<section data-state='title' class=""><h2 id="a-new-quest">A new quest</h2>
 </section>
 
 <section  class=""><h2 id="to-see-afresh">To see afresh</h2>
+</section>
+
+<section  class=""><h2 id="to-go-back-to-a-time-when">To go back to a time when</h2>
+</section>
+
+<section  class=""><h2 id="i-didn-t-know-the-limitation-of-my-tools">I didn&#39;t know the limitation of my tools</h2>
 </section>
 
 <section  class=""><h2 id="brief">Brief</h2>
@@ -541,12 +505,36 @@ function renderHeatMap(data) {
 </section>
 
 <section  class=""><h2 id="direct-access">Direct access</h2>
+<p><img src="img/direct-access.png" alt="cool idea"></p>
 </section>
 
-<section  class=""><h2 id="but-how-">But how?</h2>
+<section  class=""><h2 id="but-form-svg-">But <code>&lt;form&gt;</code> + <code>&lt;svg&gt;</code>?</h2>
 </section>
 
-<section  class=""><h2 id="angular-s-d3-s-powers">Angular&#39;s + d3&#39;s powers</h2>
+<section  class=""><h2 id="how-will-you-validate-">How will you validate?</h2>
+</section>
+
+<section  class=""><h2 id="are-you-casting-aside-ng-">Are you casting aside <code>ng</code>?</h2>
+</section>
+
+<section  class=""><h2 id="writing-html-with-d3-">Writing HTML with D3?!</h2>
+<pre><code class="lang-js">// the horror
+var form = d3.select(&quot;#form-root&quot;)
+.append(&quot;form&quot;)
+.on(&quot;submit&quot;, handleSubmit)
+
+form.append(&quot;input&quot;)
+.attr(&quot;type&quot;, &quot;range&quot;)
+.attr(&quot;required&quot;, true)
+
+form.append(&quot;input&quot;)
+.attr(&quot;type&quot;, &quot;number&quot;)
+.attr(&quot;required&quot;, true)
+// ... and on, and on
+</code></pre>
+</section>
+
+<section  class=""><h2 id="i-need-ng-s-d3-s-powers">I need <code>ng</code>&#39;s &amp; <code>d3</code>&#39;s powers</h2>
 </section>
 
 <section  class=""><h2 id="beat-the-tools-into-submission-">Beat the tools into submission!</h2>

@@ -7,9 +7,6 @@
 
 ## Or losing benefits of Angular?
 
-## Attempt one
-{tags:{state:"subtitle"}}
-
 ## I brought 'best practice'
 
 ## `ng` view concerns live in?
@@ -45,6 +42,8 @@
 ## e.g cool inputs
 {todo: "add clock demo"}
 
+## No giant files!
+
 ## But...
 {tags:{state:"bad"}}
 
@@ -52,9 +51,7 @@
 
 ## Remember collaboration?
 
-## Seamless transitions between components
-
-## Same elements
+![transitions](img/transitions-b.gif)
 
 ## First d3 + ng bust up
 {tags:{state:"bad"}}
@@ -82,54 +79,18 @@ Simple data, ready to be used
 
 Alan Perlis
 
-## Why different?
+## Why the radical difference?
 
-D3 is idempotent, DOM is just more data
+## Idempotence tames DOM
 
-## Attempt two
-{tags:{state:"subtitle"}}
+## To D3, DOM is another data-set
 
-## Stacking attributes
+## Many functions one data-structure
 
-## Attribute directives
+- functions = d3 components
+- data-structure = DOM
 
-    <svg
 
-      bar-chart='{
-        data: ctrl.data,
-      }'
-
-      line-graph='{
-        data: ctrl.data,
-      }'
-      >
-    </svg>
-
-## Can share!
-{tags:{state:"good"}}
-
-DOM nodes accessible to all directives
-
-    <svg bar-chart line-graph>
-      <g class='some-data'></g>
-      <g class='some-data'></g>
-      <g class='some-data'></g>
-    </svg>
-
-## But..
-{tags:{state:"bad"}}
-
-## No isolate...
-{todo: "show dupe isolate error"}
-
-![no dupes](img/no-dupes.png)
-
-## Too many WTFs from team
-
-## Gain collaboration, still no composition
-
-## So...
-{tags:{state:"bad"}}
 
 
 

@@ -1,7 +1,11 @@
-## The challenge
+## A new quest
 {"tags":{"state": "title"}}
 
 ## To see afresh
+
+## To go back to a time when
+
+## I didn't know the limitation of my tools
 
 ## Brief
 
@@ -24,9 +28,33 @@
 
 ## Direct access
 
-## But how?
+![cool idea](img/direct-access.png)
 
-## Angular's + d3's powers
+## But `<form>` + `<svg>`?
+
+## How will you validate?
+
+## Are you casting aside `ng`?
+
+## Writing HTML with D3?!
+
+```js
+// the horror
+var form = d3.select("#form-root")
+.append("form")
+.on("submit", handleSubmit)
+
+form.append("input")
+.attr("type", "range")
+.attr("required", true)
+
+form.append("input")
+.attr("type", "number")
+.attr("required", true)
+// ... and on, and on
+```
+
+## I need `ng`'s & `d3`'s powers
 
 ## Beat the tools into submission!
 

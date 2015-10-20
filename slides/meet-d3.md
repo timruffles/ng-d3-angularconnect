@@ -177,16 +177,6 @@ render(elements2, data1) // elements1
 
 ## So what?
 
-## Composition
-
-<svg id="compositionDemo"></svg>
-
-<script>
-onSlideWithElementShown(document.getElementById("compositionDemo"), function() {
-  compositionDemo.apply(null, arguments);
-})
-</script>
-
 ## Collaboration
 
 ```javascript
@@ -216,6 +206,6 @@ function renderHeatMap(data) {
 
 ## Sync via `enter()`, update and `exit()`
 
-## Composition + collaboration (from idempotency)
+## Collaboration (from idempotency)
 
 
