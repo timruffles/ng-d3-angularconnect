@@ -70,4 +70,23 @@ onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
 })
 </script>
 
+## What I learned
+
+## Coding `===` enabling
+
+## When faced with a challenge
+
+## It's better to say...
+
 ##  
+
+<a class="tweet" href="http://twitter.com/">@timruffles</a>
+
+<svg id='yes'</svg>
+
+<script>
+onSlideWithElementShown(document.getElementById("yes"), function() {
+  yesDemo.apply(null, arguments);
+})
+</script>
+

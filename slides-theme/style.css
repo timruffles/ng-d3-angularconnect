@@ -99,6 +99,7 @@ body {
   font-size: 3rem;
   line-height: 1.25em;
   display: block;
+  text-decoration: none;
 }
 
 .monospace {

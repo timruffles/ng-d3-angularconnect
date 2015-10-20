@@ -139,9 +139,6 @@ function collaborationDemo(el, slideEl, bbox) {
       .domain([1, 0])
       .range([padding, bbox.height - padding])
 
-      var rectangle = d3.superformula()
-        .type("rectangle")
-
       var update = d3.select(root)
       .selectAll("g")
       .data(data)

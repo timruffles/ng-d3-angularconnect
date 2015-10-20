@@ -20,3 +20,18 @@ body {
   font-size: 1.25em;
   line-height: 2em;
 }
+
+.reveal a.tweet {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  text-align: right;
+  text-decoration: none;
+}
+
+.reveal .front a {
+  font-size: 5rem;
+  color: #000;
+}
+
+
