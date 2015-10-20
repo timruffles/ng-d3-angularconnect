@@ -58,13 +58,13 @@
 <p><img src="img/transitions-b.gif" alt="transitions"></p>
 </section>
 
-<section  class=""><h2 id="cleaning-up-the-code-">Cleaning up the code...</h2>
+<section data-state='bad' class=""><h2 id="then-i-saw-the-code">Then I saw the code</h2>
 </section>
 
-<section  class=""><h2 id="a-tale-involving-two-characters">A tale involving two characters</h2>
+<section  class=""><h2 id="my-year-has-been-peacemaking">My year has been peacemaking</h2>
 </section>
 
-<section  class=""><h2 id="a-mutual-friend-and-a-new-face">A mutual friend, and a new face</h2>
+<section  class=""><h2 id="between-a-mutual-friend-and-a-new-face">Between a mutual friend, and a new face</h2>
 </section>
 
 <section data-state='title' class=""><h2 id="our-friend-ng-">Our friend <code>ng</code></h2>
@@ -109,7 +109,7 @@
 <div class=little-console></div>
 
 <script type=cheat>
-  d3.selectAll(&quot;#meetD3 circle&quot;).attr(&quot;fill&quot;, &quot;pink&quot;);
+  d3.selectAll("#meetD3 circle").attr("fill", "pink");
 </script>
 
 </section>
@@ -122,31 +122,30 @@
 
 <section  class=""><h2 id="d3-s-callback">D3&#39;s callback</h2>
 <pre><code>d3.selectAll(&quot;.bars&quot;)
-.style(&quot;background&quot;,function(dataForElement) {
-  return dataForElement.alert ? &quot;red&quot; : &quot;green&quot;;
-});
+.style(&quot;background&quot;,
+  function(data) {
+    return data.risk &gt; 0.9 ? &quot;red&quot; : &quot;green&quot;;
+  });
 </code></pre></section>
 
-<section  class=""><h2 id="-data-"><code>(data,...) {</code></h2>
+<section  class=""><h2 id="-data-"><code>(data, ...) {</code></h2>
 <ul>
 <li>the data for an element</li>
 </ul>
 </section>
 
-<section  class=""><h2 id="-index-"><code>(...,index) {</code></h2>
-<ul>
-<li>where that data sits within the current data-set (order)</li>
-</ul>
-</section>
-
-<section  class=""><h2 id="the-bridge-el-data">The bridge, el -&gt; data</h2>
-<pre><code>function(data,index) {
-  // return value from data + index
+<section  class=""><h2 id="data-visual">Data -&gt; visual</h2>
+<pre><code>function aD3Callback(data) {
+  // transform data value, into visual value
+  return data.count + &quot;px&quot;
 }
-</code></pre><pre><code>d3.select(&quot;#root&quot;)
-  .selectAll(&quot;h3&quot;)
-  .text(function(d) {
-    return d.title;
+</code></pre></section>
+
+<section  class=""><h2 id="e-g">e.g</h2>
+<pre><code>d3.select(&quot;#root&quot;)
+  .selectAll(&quot;div&quot;)
+  .style(&quot;width&quot;, function(d) {
+    return d.count + &quot;px&quot;;
   });
 </code></pre></section>
 
@@ -154,28 +153,29 @@
 </section>
 
 <section  class=""><h2 id="-data-"><code>data()</code></h2>
-<pre><code>// make a selection, then call data()
-d3.selectAll(&quot;h3&quot;)
+<pre><code>d3.selectAll(&quot;h3&quot;)
   .data([
     {title: &quot;jQuery&quot;},
     {title: &quot;D3&quot;}
   ])
-  // now data can be related one-to-one with elements
 </code></pre></section>
 
 <section  class=""><h2 id="the-data-join-">The data-join!</h2>
 </section>
 
 <section  class=""><h2 id="driving-the-document-with-data">Driving the document with data</h2>
+</section>
+
+<section  class=""><h2 id="e-g">e.g</h2>
 <script type=eg code-sample>
-  <h3 class=drive-me></h3>
-  <h3 class=drive-me></h3>
+  <div class=estimate>build chart: tomorrow</div>
+  <div class=estimate>fix bug: in 20 minutes</div>
 </script>
 
 <div class=little-console></div>
 
 <script type=cheat>
-  d3.selectAll(&quot;.drive-me&quot;).data([{title:&quot;hi&quot;},{title:&quot;jquery&quot;}]).text(function(d) { return d.title })
+  d3.selectAll(".estimate").data([{risk:0.9},{risk:0.1}]).style("color", (d) => d.risk > 0.5 ? "red" : "green");
 </script>
 
 </section>

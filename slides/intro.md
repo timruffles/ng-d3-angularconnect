@@ -13,11 +13,12 @@
 
 ![transitions](img/transitions-b.gif)
 
-## Cleaning up the code...
+## Then I saw the code
+{tags:{state:"bad"}}
 
-## A tale involving two characters
+## My year has been peacemaking
 
-## A mutual friend, and a new face
+## Between a mutual friend, and a new face
 
 ## Our friend `ng`
 {tags:{state:"title"}}

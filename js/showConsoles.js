@@ -7,12 +7,14 @@ function showConsoles() {
 
   ;[].forEach.call(document.querySelectorAll(".little-console"),function(el) {
     var cmds = new LittleConsole.Commands;
-    var console = new LittleConsole({el: el,commands: cmds});
+    var littleConsole = new LittleConsole({el: el,commands: cmds});
     var slide = el.parentElement;
     var cheat = slide.querySelector("[type=cheat]");
     if(!cheat) return;
+    console.log(cheat.innerHTML);
+    
     cheats.push({
-      console: console,
+      console: littleConsole,
       slide: slide,
       src: cheat.innerHTML,
     });

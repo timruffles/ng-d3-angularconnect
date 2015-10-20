@@ -34,32 +34,33 @@
 
 ```
 d3.selectAll(".bars")
-.style("background",function(dataForElement) {
-  return dataForElement.alert ? "red" : "green";
-});
+.style("background",
+  function(data) {
+    return data.risk > 0.9 ? "red" : "green";
+  });
 ```
 
-## `(data,...) {`
+## `(data, ...) {`
 
 - the data for an element
 
-## `(...,index) {`
 
-- where that data sits within the current data-set (order)
-
-## The bridge, el -> data
+## Data -> visual
 
 ```
-function(data,index) {
-  // return value from data + index
+function aD3Callback(data) {
+  // transform data value, into visual value
+  return data.count + "px"
 }
 ```
 
+## e.g
+
 ```
 d3.select("#root")
-  .selectAll("h3")
-  .text(function(d) {
-    return d.title;
+  .selectAll("div")
+  .style("width", function(d) {
+    return d.count + "px";
   });
 ```
 ## ...and where does the data come from?
@@ -67,28 +68,28 @@ d3.select("#root")
 ## `data()`
 
 ```
-// make a selection, then call data()
 d3.selectAll("h3")
   .data([
     {title: "jQuery"},
     {title: "D3"}
   ])
-  // now data can be related one-to-one with elements
 ```
 
 ## The data-join!
 
 ## Driving the document with data
 
+## e.g
+
 <script type=eg code-sample>
-  <h3 class=drive-me></h3>
-  <h3 class=drive-me></h3>
+  <div class=estimate>build chart: tomorrow</div>
+  <div class=estimate>fix bug: in 20 minutes</div>
 </script>
 
 <div class=little-console></div>
 
 <script type=cheat>
-  d3.selectAll(".drive-me").data([{title:"hi"},{title:"jquery"}]).text(function(d) { return d.title })
+  d3.selectAll(".estimate").data([{risk:0.9},{risk:0.1}]).style("color", (d) => d.risk > 0.5 ? "red" : "green");
 </script>
 
 ## Synchronising data and screen
