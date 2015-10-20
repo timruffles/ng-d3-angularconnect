@@ -1,13 +1,13 @@
 ## My year
 {tags:{state:"title"}}
 
-## A suprise
+## The proposition
 
 ## You built what?!
 
 ![transitions](img/transitions.gif)
 
-## I said yes
+## Of course I said yes
 
 ## I wanted to build cool things
 

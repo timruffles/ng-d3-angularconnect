@@ -53,42 +53,6 @@
 
 ![transitions](img/transitions-b.gif)
 
-## First d3 + ng bust up
-{tags:{state:"bad"}}
-
-## The selfishness of `<components>`
-
-## `<components>` won't share their DOM
-
-## No overlapping behaviours
-{todo: "ugly"}
-
-![overlap](img/oo.png)
-
-## OO view of DOM
-
-Implementation detail to be hidden
-
-## D3 view of DOM
-
-Simple data, ready to be used
-
-## Embrace data
-
->  Better have 100 functions for 1 data structure than 10 functions for 10 data structures
-
-Alan Perlis
-
-## Why the radical difference?
-
-## Idempotence tames DOM
-
-## To D3, DOM is another data-set
-
-## Many functions one data-structure
-
-- functions = d3 components
-- data-structure = DOM
 
 
 

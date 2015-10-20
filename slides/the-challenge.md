@@ -1,9 +1,7 @@
 ## A new quest
 {"tags":{"state": "title"}}
 
-## To see afresh
-
-## To go back to a time when
+## To go back to the place where
 
 ## I didn't know the limitation of my tools
 

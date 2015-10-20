@@ -179,33 +179,88 @@ render(elements2, data1) // elements1
 
 ## Collaboration
 
+
+## 
+
+<div id="collaborationDemo">
+  <svg height=200></svg>
+</div>
+
+```
+var colData = [
+  {id: 1}, {id: 2}, {id: 3}
+];
+
+renderCollaborator(colData);
+```
+
+<div class=little-console></div>
+
+<script>
+onSlideWithElementShown(document.getElementById("collaborationDemo"), function() {
+  collaborationDemo.apply(null, arguments);
+})
+</script>
+
+## How?
+
+## Idempotent components
+
+```
+function xyPlot() {
+
+  plot.itemClass = setterGetter();
+
+  return plot(selection, data) {
+    selection.selectAll("." + plot.itemClass())
+    .data(data)
+    // ... etc
+  }
+}
+```
+
+## Functions over 2 data-sets
+
+```javascript
+function barChart() {
+
+  bars.itemClass = setterGetter();
+
+  return bars(selection, data) {
+    selection.selectAll("." + plot.itemClass())
+    .data(data)
+    // ... etc
+  }
+}
+```
+
+## Data + elements
+
+## Idempotency = simplicity
+
 ```javascript
 
-function renderXyPlot(data) {
-  d3.select("#chart")
-  .call(drawLineChart, data)
-  .call(drawAxis, data)
-  .call(addLabels, data)
-} 
+// our renderers are simple functions
+var xy = xyPlot().itemClass(".point");
+var bar = barChart().itemClass(".point");
 
-function renderHeatMap(data) {
+var active = xy;
+var data = [{id: 1}, {id: 2}, {id: 3}];
 
-  var sectors = heatmap();
-  var laidOut = heatmap.nodes(data);
-
-  d3.select("#chart")
-  .call(renderSectors, sectors)
-  .call(renderNodes, laidOut)
+function render() {
+  d3.select("#demo")
+  .call(active, data)
 } 
 ```
 
 ## d3's big ideas
+{tags:{state:"subtitle"}}
 
 ## d3 ≃ jQuery + data = data-join
 {class: "big-text"}
 
 ## Sync via `enter()`, update and `exit()`
 
-## Collaboration (from idempotency)
+## Collaboration (via idempotency)
 
 

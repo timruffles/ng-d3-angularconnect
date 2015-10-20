@@ -1,5 +1,5 @@
 /**
- * demonstrating composing multiple components with d3
+ * demonstrating d3's contexts
  */
 (function() {
 "use strict";
