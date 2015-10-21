@@ -170,7 +170,7 @@ onSlideWithElementShown(document.getElementById("contextsDemo"), function() {
 
 ## d3 components = functions that sync `<DOM>` & `{data}`
 
-## Components = functions
+## Same input, same output
 
 ```
 component(elements0, data1) // elements1

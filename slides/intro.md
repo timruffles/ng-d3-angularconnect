@@ -7,6 +7,8 @@
 
 ![transitions](img/transitions.gif)
 
+## I was blown away
+
 ## Of course I said yes
 
 ## I wanted to build cool things

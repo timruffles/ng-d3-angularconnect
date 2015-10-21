@@ -3,8 +3,6 @@
 
 ## How are newbies building cooler apps?
 
-## Including myself, when I was a newbie?
-
 ## An unsettling realisation
 
 ## An example

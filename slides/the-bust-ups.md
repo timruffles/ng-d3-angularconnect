@@ -1,9 +1,11 @@
-## Using d3 + ng
+## Back to the quest
 {tags:{state:"title"}}
 
 ## How to use D3's powers
 
-## Without 3,269 line file of doom
+## Without...
+
+![huge javascript file](img/huge-js.png)
 
 ## Or losing benefits of Angular?
 
