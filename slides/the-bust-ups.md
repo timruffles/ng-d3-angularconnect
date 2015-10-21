@@ -57,7 +57,9 @@
 ## But...
 {tags:{state:"bad"}}
 
-## They were not impressed
+## We couldn't be ambitious enough
+
+## Web-components selfishly horde `<DOM>`
 
 ## Remember collaboration?
 

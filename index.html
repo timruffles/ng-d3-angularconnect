@@ -407,7 +407,10 @@ onSlideWithElementShown(document.getElementById("collaborationDemo"), function()
 <section data-state='bad' class=""><h2 id="but-">But...</h2>
 </section>
 
-<section  class=""><h2 id="they-were-not-impressed">They were not impressed</h2>
+<section  class=""><h2 id="we-couldn-t-be-ambitious-enough">We couldn&#39;t be ambitious enough</h2>
+</section>
+
+<section  class=""><h2 id="web-components-selfishly-horde-dom-">Web-components selfishly horde <code>&lt;DOM&gt;</code></h2>
 </section>
 
 <section  class=""><h2 id="remember-collaboration-">Remember collaboration?</h2>
@@ -427,16 +430,22 @@ onSlideWithElementShown(document.getElementById("collaborationDemo"), function()
 <section  class=""><h2 id="something-was-wrong-with-me">Something was wrong with me</h2>
 </section>
 
-<section  class=""><h2 id="i-self-diagnosed-with-">I self diagnosed with...</h2>
-</section>
-
 <section data-state='bad' class=""><h2 id="programmer-vision">Programmer vision</h2>
 </section>
 
-<section  class=""><h2 id="where-ambition-was-impossible">Where ambition was impossible</h2>
+<section  class=""><h2 id="where-the-ambitious-">Where the ambitious...</h2>
 </section>
 
-<section  class=""><h2 id="because-the-right-way-cool-things">Because the &#39;right way&#39; &gt; cool things</h2>
+<section  class=""><h2 id="-was-sacrificed-to-optimise-the-average">...was sacrificed to optimise the average</h2>
+</section>
+
+<section  class=""><h2 id="users-didn-t-care-about-best-practice-">Users didn&#39;t care about &#39;best practice&#39;</h2>
+</section>
+
+<section  class=""><h2 id="-best-practice-should-be-making-things-easier">&#39;Best practice&#39; should be making things easier</h2>
+</section>
+
+<section  class=""><h2 id="-not-limiting-you-to-making-easy-things">...not limiting you to making easy things</h2>
 </section>
 
 <section data-state='bad' class=""><h2 id="was-i-becoming-an-enterprise-architect-">Was I becoming an enterprise architect?!</h2>
@@ -449,10 +458,10 @@ onSlideWithElementShown(document.getElementById("collaborationDemo"), function()
 <section data-state='title' class=""><h2 id="a-new-quest">A new quest</h2>
 </section>
 
-<section  class=""><h2 id="to-go-back-to-the-place-where">To go back to the place where</h2>
+<section  class=""><h2 id="to-go-back-before">To go back before</h2>
 </section>
 
-<section  class=""><h2 id="i-didn-t-know-the-limitation-of-my-tools">I didn&#39;t know the limitation of my tools</h2>
+<section  class=""><h2 id="i-knew-the-limitation-of-my-tools">I knew the limitation of my tools</h2>
 </section>
 
 <section  class=""><h2 id="brief">Brief</h2>
@@ -463,14 +472,14 @@ onSlideWithElementShown(document.getElementById("collaborationDemo"), function()
 </ul>
 </section>
 
-<section  class=""><h2 id="pfff-too-easy">Pfff! Too easy</h2>
+<section  class=""><h2 id="ok-i-ve-done-that-before">Ok, I&#39;ve done that before</h2>
 </section>
 
-<section  class=""><h2 id="auto-pilot">Auto-pilot</h2>
+<section  class=""><h2 id="chart-component">Chart component</h2>
 <p><img src="img/chart-boring.png" alt="boring chart"></p>
 </section>
 
-<section  class=""><h2 id="add-modal">Add modal</h2>
+<section  class=""><h2 id="editing-component">Editing component</h2>
 <p><img src="img/chart-modal.png" alt="boring modal"></p>
 </section>
 
@@ -511,7 +520,7 @@ form.append(&quot;input&quot;)
 </code></pre>
 </section>
 
-<section  class=""><h2 id="i-need-ng-s-d3-s-powers">I need <code>ng</code>&#39;s &amp; <code>d3</code>&#39;s powers</h2>
+<section  class=""><h2 id="i-needed-ng-s-d3-s-powers">I needed <code>ng</code>&#39;s &amp; <code>d3</code>&#39;s powers</h2>
 </section>
 
 <section  class=""><h2 id="beat-the-tools-into-submission-">Beat the tools into submission!</h2>
@@ -523,12 +532,30 @@ form.append(&quot;input&quot;)
 <section  class=""><h2 id="flip-the-hierarchy-">Flip the hierarchy!</h2>
 </section>
 
+<section  class=""><h2 id="declarative-on-demand">Declarative on demand</h2>
+<pre><code class="lang-javascript">editedSelection
+.angularize(function(d, i) {
+  return {
+    controller: &quot;ComplexFormCtrl&quot;,
+    locals: {
+      // provide Ctrl a way to hand back to D3
+      $edited: edited,
+    },
+    templateUrl: &quot;editors/complexForm.html&quot;,
+    controllerAs: &quot;ctrl&quot;,
+    injector: &quot;app&quot;,
+    modules: [&quot;app&quot;, &quot;someFormModule&quot;],
+  }
+})
+</code></pre>
+</section>
+
 <section  class=""><h2 id="-"> </h2>
 <svg id='resolutionDemo' class="demo"></svg>
 
 <script>
 onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
-  resolutionDemo.fromHook.apply(null, arguments);
+resolutionDemo.fromHook.apply(null, arguments);
 })
 </script>
 
@@ -537,10 +564,13 @@ onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
 <section data-state='title' class=""><h2 id="coding-enabling">Coding <code>===</code> enabling</h2>
 </section>
 
-<section  class=""><h2 id="when-we-have-big-ideas">When we have big ideas</h2>
+<section  class=""><h2 id="let-s-not-find-excuses">Let&#39;s not find excuses</h2>
 </section>
 
-<section  class=""><h2 id="let-s-find-reasons-to-say">Let&#39;s find reasons to say</h2>
+<section  class=""><h2 id="let-s-remember-why-we-got-into-code">Let&#39;s remember why we got into code</h2>
+</section>
+
+<section  class=""><h2 id="let-s-find-reasons-to-say-">Let&#39;s find reasons to say...</h2>
 </section>
 
 <section  class=""><h2 id="-"> </h2>
@@ -549,12 +579,12 @@ onSlideWithElementShown(document.getElementById("resolutionDemo"), function() {
 
 <script>
 onSlideWithElementShown(document.getElementById("yes"), function(el, slideEl) {
-  setTimeout(function() {
-    d3.select(slideEl)
-    .select(".tweet")
-    .style("opacity", 1)
-  }, 1250);
-  yesDemo.apply(null, arguments);
+setTimeout(function() {
+  d3.select(slideEl)
+  .select(".tweet")
+  .style("opacity", 1)
+}, 1250);
+yesDemo.apply(null, arguments);
 })
 </script>
 
