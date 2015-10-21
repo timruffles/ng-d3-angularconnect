@@ -30,28 +30,33 @@
 
 
 ## D3's callback
+{class:"bigCode"}
 
 ```
 d3.selectAll(".bars")
 .style("background",
   function(data) {
-    return data.risk > 0.9 ? "red" : "green";
+    return data.risk > 0.9 
+      ? "red" : "green";
   });
 ```
 
 ## Data -> visual
+{class:"bigCode"}
 
 ```
 d3.selectAll(".bars")
 .style("background",
   function(data) {
-    return data.risk > 0.9 ? "red" : "green";
+    return data.risk > 0.9 
+      ? "red" : "green";
   });
 ```
 
 ## ...and where does the data come from?
 
 ## `data()`
+{class:"bigCode"}
 
 ```
 d3.selectAll("h3")
@@ -65,7 +70,7 @@ d3.selectAll("h3")
 
 ## Driving the document with data
 
-## e.g
+## 
 
 <script type=eg code-sample>
   <svg id=join width=600 height=220>
@@ -80,18 +85,19 @@ d3.selectAll("h3")
   d3.selectAll("#join circle").data([{risk:0.9},{risk:0.1}]).attr("fill", (d) => d.risk > 0.5 ? "red" : "green");
 </script>
 
-## Sync data & DOM
-
-- updating existing DOM 
-- adding new nodes
-- removing
-
-## Sync
+## Sync `DOM` + `data`
 
 ```javascript
-var update = d3.selectAll('.x').data(data);
-var enter = update.enter();
-var exit = update.exit();
+var update = d3.selectAll('circle')
+  .data(data)
+  .attr("r", getRadius)
+
+var enter = update.enter()
+  .append("circle")
+
+
+var exit = update.exit()
+  .remove()
 ```
 
 ## 
@@ -159,23 +165,22 @@ onSlideWithElementShown(document.getElementById("contextsDemo"), function() {
 
 
 ## Big idea
-{tags:{state: "subtitle"}}
+{tags:{state: "title"}}
 
 ## Idempotency
-{tags:{state: "subtitle"}}
 
 ## d3 components = functions that sync `<DOM>` & `{data}`
 
-## Components are just a function
+## Components = functions
 
 ```
-render(elements0, data1) // elements1
+component(elements0, data1) // elements1
 
-render(elements1, data1) // elements1
+component(elements1, data1) // elements1
 
-render(elements1, data2) // elements2
+component(elements1, data2) // elements2
 
-render(elements2, data1) // elements1
+component(elements2, data1) // elements1
 ```
 
 ## So what?

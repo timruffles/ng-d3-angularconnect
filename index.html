@@ -77,9 +77,6 @@
 <p><img class='offset' src="img/ng.png" alt="angular js shield logo"></p>
 </section>
 
-<section  class=""><h2 id="hefty">Hefty</h2>
-</section>
-
 <section  class="undefined"><h2 id="big-ideas">Big ideas</h2>
 </section>
 
@@ -109,9 +106,6 @@ onSlideWithElementShown(document.getElementById("d3Demo"), function(el) {
 })
 </script>
 
-</section>
-
-<section  class=""><h2 id="just-a-library">Just a library</h2>
 </section>
 
 <section  class=""><h2 id="has-big-ideas-too">Has big ideas too</h2>
@@ -151,26 +145,28 @@ onSlideWithElementShown(document.getElementById("d3Demo"), function(el) {
 <section data-state='subtitle' class=""><h2 id="one-callback-api-turns-jq-into-d3">One callback API turns jQ into D3</h2>
 </section>
 
-<section  class=""><h2 id="d3-s-callback">D3&#39;s callback</h2>
+<section  class="bigCode"><h2 id="d3-s-callback">D3&#39;s callback</h2>
 <pre><code>d3.selectAll(&quot;.bars&quot;)
 .style(&quot;background&quot;,
   function(data) {
-    return data.risk &gt; 0.9 ? &quot;red&quot; : &quot;green&quot;;
+    return data.risk &gt; 0.9 
+      ? &quot;red&quot; : &quot;green&quot;;
   });
 </code></pre></section>
 
-<section  class=""><h2 id="data-visual">Data -&gt; visual</h2>
+<section  class="bigCode"><h2 id="data-visual">Data -&gt; visual</h2>
 <pre><code>d3.selectAll(&quot;.bars&quot;)
 .style(&quot;background&quot;,
   function(data) {
-    return data.risk &gt; 0.9 ? &quot;red&quot; : &quot;green&quot;;
+    return data.risk &gt; 0.9 
+      ? &quot;red&quot; : &quot;green&quot;;
   });
 </code></pre></section>
 
 <section  class=""><h2 id="-and-where-does-the-data-come-from-">...and where does the data come from?</h2>
 </section>
 
-<section  class=""><h2 id="-data-"><code>data()</code></h2>
+<section  class="bigCode"><h2 id="-data-"><code>data()</code></h2>
 <pre><code>d3.selectAll(&quot;h3&quot;)
   .data([
     {title: &quot;jQuery&quot;},
@@ -184,7 +180,7 @@ onSlideWithElementShown(document.getElementById("d3Demo"), function(el) {
 <section  class=""><h2 id="driving-the-document-with-data">Driving the document with data</h2>
 </section>
 
-<section  class=""><h2 id="e-g">e.g</h2>
+<section  class=""><h2 id="-"> </h2>
 <script type=eg code-sample>
   <svg id=join width=600 height=220>
     <circle r=50 cx=250 cy=110  />
@@ -200,18 +196,17 @@ onSlideWithElementShown(document.getElementById("d3Demo"), function(el) {
 
 </section>
 
-<section  class=""><h2 id="sync-data-dom">Sync data &amp; DOM</h2>
-<ul>
-<li>updating existing DOM </li>
-<li>adding new nodes</li>
-<li>removing</li>
-</ul>
-</section>
+<section  class=""><h2 id="sync-dom-data-">Sync <code>DOM</code> + <code>data</code></h2>
+<pre><code class="lang-javascript">var update = d3.selectAll(&#39;circle&#39;)
+  .data(data)
+  .attr(&quot;r&quot;, getRadius)
 
-<section  class=""><h2 id="sync">Sync</h2>
-<pre><code class="lang-javascript">var update = d3.selectAll(&#39;.x&#39;).data(data);
-var enter = update.enter();
-var exit = update.exit();
+var enter = update.enter()
+  .append(&quot;circle&quot;)
+
+
+var exit = update.exit()
+  .remove()
 </code></pre>
 </section>
 
@@ -275,23 +270,23 @@ onSlideWithElementShown(document.getElementById("contextsDemo"), function() {
 <p></div></p>
 </section>
 
-<section data-state='subtitle' class=""><h2 id="big-idea">Big idea</h2>
+<section data-state='title' class=""><h2 id="big-idea">Big idea</h2>
 </section>
 
-<section data-state='subtitle' class=""><h2 id="idempotency">Idempotency</h2>
+<section  class=""><h2 id="idempotency">Idempotency</h2>
 </section>
 
 <section  class=""><h2 id="d3-components-functions-that-sync-dom-data-">d3 components = functions that sync <code>&lt;DOM&gt;</code> &amp; <code>{data}</code></h2>
 </section>
 
-<section  class=""><h2 id="components-are-just-a-function">Components are just a function</h2>
-<pre><code>render(elements0, data1) // elements1
+<section  class=""><h2 id="components-functions">Components = functions</h2>
+<pre><code>component(elements0, data1) // elements1
 
-render(elements1, data1) // elements1
+component(elements1, data1) // elements1
 
-render(elements1, data2) // elements2
+component(elements1, data2) // elements2
 
-render(elements2, data1) // elements1
+component(elements2, data1) // elements1
 </code></pre></section>
 
 <section  class=""><h2 id="so-what-">So what?</h2>
@@ -388,9 +383,8 @@ onSlideWithElementShown(document.getElementById("collaborationDemo"), function()
 
 <section  class=""><h2 id="-"> </h2>
 <script type=eg code-sample>
-  <form name=timeForm ng-controller="TimeCtrl as timeCtrl">
-    <clock-input name=time ng-model="timeCtrl.item.time"
-      valid-time="pm"
+  <form ng-controller="TimeCtrl as timeCtrl" name=timeForm>
+    <clock-input ng-model="timeCtrl.item.time" name=time 
       >
     </clock-input>
   </form>
@@ -407,7 +401,7 @@ onSlideWithElementShown(document.getElementById("collaborationDemo"), function()
 <section data-state='bad' class=""><h2 id="but-">But...</h2>
 </section>
 
-<section  class=""><h2 id="we-couldn-t-be-ambitious-enough">We couldn&#39;t be ambitious enough</h2>
+<section  class=""><h2 id="our-most-ambitious-plans-were-thwarted">Our most ambitious plans were thwarted</h2>
 </section>
 
 <section  class=""><h2 id="web-components-selfishly-horde-dom-">Web-components selfishly horde <code>&lt;DOM&gt;</code></h2>
@@ -417,54 +411,22 @@ onSlideWithElementShown(document.getElementById("collaborationDemo"), function()
 <p><img src="img/transitions-b.gif" alt="transitions"></p>
 </section>
 
-<section data-state='bad' class=""><h2 id="i-had-a-moment-of-doubt">I had a moment of doubt</h2>
-</section>
-
-<section  class=""><h2 id="why-do-all-the-apps-i-build-look-the-same-">Why do all the apps I build look the same?</h2>
-<p><img src="img/hierarchy.png" alt="hierarchy"></p>
+<section data-state='bad' class=""><h2 id="a-dark-night-of-the-soul">A dark night of the soul</h2>
 </section>
 
 <section  class=""><h2 id="how-are-newbies-building-cooler-apps-">How are newbies building cooler apps?</h2>
 </section>
 
-<section  class=""><h2 id="something-was-wrong-with-me">Something was wrong with me</h2>
+<section  class=""><h2 id="including-myself-when-i-was-a-newbie-">Including myself, when I was a newbie?</h2>
 </section>
 
-<section data-state='bad' class=""><h2 id="programmer-vision">Programmer vision</h2>
+<section  class=""><h2 id="an-unsettling-realisation">An unsettling realisation</h2>
 </section>
 
-<section  class=""><h2 id="where-the-ambitious-">Where the ambitious...</h2>
+<section data-state='title' class=""><h2 id="an-example">An example</h2>
 </section>
 
-<section  class=""><h2 id="-was-sacrificed-to-optimise-the-average">...was sacrificed to optimise the average</h2>
-</section>
-
-<section  class=""><h2 id="users-didn-t-care-about-best-practice-">Users didn&#39;t care about &#39;best practice&#39;</h2>
-</section>
-
-<section  class=""><h2 id="-best-practice-should-be-making-things-easier">&#39;Best practice&#39; should be making things easier</h2>
-</section>
-
-<section  class=""><h2 id="-not-limiting-you-to-making-easy-things">...not limiting you to making easy things</h2>
-</section>
-
-<section data-state='bad' class=""><h2 id="was-i-becoming-an-enterprise-architect-">Was I becoming an enterprise architect?!</h2>
-<p><img src="img/uml.png" alt="uml, ugh"></p>
-</section>
-
-<section  class=""><h2 id="don-t-let-it-end-like-this-">Don&#39;t let it end like this...</h2>
-</section>
-
-<section data-state='title' class=""><h2 id="a-new-quest">A new quest</h2>
-</section>
-
-<section  class=""><h2 id="to-go-back-before">To go back before</h2>
-</section>
-
-<section  class=""><h2 id="i-knew-the-limitation-of-my-tools">I knew the limitation of my tools</h2>
-</section>
-
-<section  class=""><h2 id="brief">Brief</h2>
+<section  class=""><h2 id="editable-chart">Editable chart</h2>
 <ul>
 <li>x/y plot</li>
 <li>editable data</li>
@@ -472,7 +434,7 @@ onSlideWithElementShown(document.getElementById("collaborationDemo"), function()
 </ul>
 </section>
 
-<section  class=""><h2 id="ok-i-ve-done-that-before">Ok, I&#39;ve done that before</h2>
+<section  class=""><h2 id="ok-we-ve-done-that-before">Ok, we&#39;ve done that before</h2>
 </section>
 
 <section  class=""><h2 id="chart-component">Chart component</h2>
@@ -483,7 +445,46 @@ onSlideWithElementShown(document.getElementById("collaborationDemo"), function()
 <p><img src="img/chart-modal.png" alt="boring modal"></p>
 </section>
 
-<section data-state='bad' class=""><h2 id="no-programmer-vision-">NO! PROGRAMMER VISION!</h2>
+<section data-state='bad' class=""><h2 id="boring-">BORING!</h2>
+</section>
+
+<section  class=""><h2 id="users-don-t-care-about-components">Users don&#39;t care about components</h2>
+</section>
+
+<section  class=""><h2 id="-"> </h2>
+<p><img src="img/hierarchy.png" alt="hierarchy"></p>
+</section>
+
+<section  class=""><h2 id="-they-don-t-even-see-them">...they don&#39;t even see them</h2>
+</section>
+
+<section data-state='bad' class=""><h2 id="programmer-vision-">PROGRAMMER VISION!</h2>
+<p><img src="img/hierarchy.png" alt="hierarchy"></p>
+</section>
+
+<section  class=""><h2 id="where-the-ambitious-">Where the ambitious...</h2>
+</section>
+
+<section  class=""><h2 id="-is-sacrificed-to-optimise-the-average">...is sacrificed to optimise the average</h2>
+</section>
+
+<section  class=""><h2 id="users-don-t-care-about-best-practice-">Users don&#39;t care about &#39;best practice&#39;</h2>
+</section>
+
+<section  class=""><h2 id="-best-practice-should-be-making-things-easier">&#39;Best practice&#39; should be making things easier</h2>
+</section>
+
+<section  class=""><h2 id="-not-limiting-you-to-easy-things">...not limiting you to easy things</h2>
+</section>
+
+<section data-state='bad' class=""><h2 id="did-i-want-to-be-an-enterprise-architect-">Did I want to be an enterprise architect?!</h2>
+<p><img src="img/uml.png" alt="uml, ugh"></p>
+</section>
+
+<section data-state='title' class=""><h2 id="a-new-quest">A new quest</h2>
+</section>
+
+<section  class=""><h2 id="no-more-programmer-vision">No more programmer vision</h2>
 </section>
 
 <section  class=""><h2 id="direct-access">Direct access</h2>
@@ -520,7 +521,12 @@ form.append(&quot;input&quot;)
 </code></pre>
 </section>
 
-<section  class=""><h2 id="i-needed-ng-s-d3-s-powers">I needed <code>ng</code>&#39;s &amp; <code>d3</code>&#39;s powers</h2>
+<section  class=""><h2 id="i-needed-ng-d3-">I needed <code>ng</code> &amp; <code>d3</code></h2>
+<div class=two-up>
+  <img class='offset' src="img/ng.png" alt="angular js shield logo">
+  <img class='offset' src="img/d3.svg" width=748 alt="d3 logo">
+</div>
+
 </section>
 
 <section  class=""><h2 id="beat-the-tools-into-submission-">Beat the tools into submission!</h2>
@@ -532,7 +538,7 @@ form.append(&quot;input&quot;)
 <section  class=""><h2 id="flip-the-hierarchy-">Flip the hierarchy!</h2>
 </section>
 
-<section  class=""><h2 id="declarative-on-demand">Declarative on demand</h2>
+<section  class=""><h2 id="on-demand">On demand</h2>
 <pre><code class="lang-javascript">editedSelection
 .angularize(function(d, i) {
   return {

@@ -1,28 +1,7 @@
 ## A new quest
 {"tags":{"state": "title"}}
 
-## To go back before
-
-## I knew the limitation of my tools
-
-## Brief
-
-- x/y plot
-- editable data
-- update on change
-
-## Ok, I've done that before
-
-## Chart component
-
-![boring chart](img/chart-boring.png)
-
-## Editing component
-
-![boring modal](img/chart-modal.png)
-
-## NO! PROGRAMMER VISION!
-{"tags":{"state": "bad"}}
+## No more programmer vision
 
 ## Direct access
 
@@ -56,7 +35,12 @@ form.append("input")
 // ... and on, and on
 ```
 
-## I needed `ng`'s & `d3`'s powers
+## I needed `ng` & `d3`
+
+<div class=two-up>
+  <img class='offset' src="img/ng.png" alt="angular js shield logo">
+  <img class='offset' src="img/d3.svg" width=748 alt="d3 logo">
+</div>
 
 ## Beat the tools into submission!
 
@@ -64,7 +48,7 @@ form.append("input")
 
 ## Flip the hierarchy!
 
-## Declarative on demand
+## On demand
 
 ```javascript
 editedSelection

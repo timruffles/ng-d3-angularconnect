@@ -1,33 +1,61 @@
-## I had a moment of doubt
+## A dark night of the soul
 {tags:{state:"bad"}}
-
-## Why do all the apps I build look the same?
-
-![hierarchy](img/hierarchy.png)
 
 ## How are newbies building cooler apps?
 
-## Something was wrong with me
+## Including myself, when I was a newbie?
 
-## Programmer vision
-{tags:{state:"bad"}}
+## An unsettling realisation
+
+## An example
+{tags:{state:"title"}}
+
+## Editable chart
+
+- x/y plot
+- editable data
+- update on change
+
+## Ok, we've done that before
+
+## Chart component
+
+![boring chart](img/chart-boring.png)
+
+## Editing component
+
+![boring modal](img/chart-modal.png)
+
+## BORING!
+{"tags":{"state": "bad"}}
+
+## Users don't care about components
+
+## 
+
+![hierarchy](img/hierarchy.png)
+
+## ...they don't even see them
+
+## PROGRAMMER VISION!
+{"tags":{"state": "bad"}}
+
+![hierarchy](img/hierarchy.png)
 
 ## Where the ambitious...
 
-## ...was sacrificed to optimise the average
+## ...is sacrificed to optimise the average
 
-## Users didn't care about 'best practice'
+## Users don't care about 'best practice'
 
 ## 'Best practice' should be making things easier
 
-## ...not limiting you to making easy things
+## ...not limiting you to easy things
 
-## Was I becoming an enterprise architect?!
+## Did I want to be an enterprise architect?!
 {tags:{state:"bad"}}
 
 ![uml, ugh](img/uml.png)
-
-## Don't let it end like this...
 
 
 

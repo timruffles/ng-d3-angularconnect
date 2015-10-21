@@ -27,8 +27,6 @@
 
 <img class='offset' src="img/ng.png" alt="angular js shield logo">
 
-## Hefty
-
 ## Big ideas
 
 "HTML for web apps"
@@ -60,8 +58,6 @@ onSlideWithElementShown(document.getElementById("d3Demo"), function(el) {
   };
 })
 </script>
-
-## Just a library
 
 ## Has big ideas too
 

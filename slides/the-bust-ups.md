@@ -42,9 +42,8 @@
 ## 
 
 <script type=eg code-sample>
-  <form name=timeForm ng-controller="TimeCtrl as timeCtrl">
-    <clock-input name=time ng-model="timeCtrl.item.time"
-      valid-time="pm"
+  <form ng-controller="TimeCtrl as timeCtrl" name=timeForm>
+    <clock-input ng-model="timeCtrl.item.time" name=time 
       >
     </clock-input>
   </form>
@@ -57,7 +56,7 @@
 ## But...
 {tags:{state:"bad"}}
 
-## We couldn't be ambitious enough
+## Our most ambitious plans were thwarted
 
 ## Web-components selfishly horde `<DOM>`
 
