@@ -9,7 +9,7 @@ window.yesDemo = yes;
 function yes(el, slideEl, bbox) {
 
   var letterPoints = getLetterPoints();
-  var points = makePoints(900, letterPoints);
+  var points = makePoints(700, letterPoints);
   var stopForce = _.noop;
 
   cleanup();
