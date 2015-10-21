@@ -125,7 +125,6 @@ onSlideWithElementShown(document.getElementById("contextsDemo"), function() {
 </script>
 
 ## 
-{class:"notitle", todo: "remove title"}
 
 <div class=contexts-explained>
 
