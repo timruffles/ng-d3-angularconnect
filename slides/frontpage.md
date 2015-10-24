@@ -1,7 +1,6 @@
 ## D3 in Angular, Angular in D3
-{"tags":{"state": "title"}}
+{class: "front"}
 
-@timruffles
-
-timr.co
+[@timruffles](http://twitter.com/timruffles)
+[@sidekicksrc](http://twitter.com/sidekicksrc)
 

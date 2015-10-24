@@ -1,10 +1,5 @@
-var mdDeferred;
-var mdPromise;
-
-angular.injector(["ng"]).invoke(function($q) {
-  mdDeferred = $q.defer();
-  mdPromise = mdDeferred.promise;
-});
+(function() {
+"use strict";
 
 Reveal.initialize({
 
@@ -54,14 +49,6 @@ Reveal.initialize({
         return !document.body.classList;
       }
     },
-    // Markdown in <section> elements
-    {
-      src: 'reveal/plugin/markdown/markdown.js',
-      condition: function() {
-        return !!document.querySelector('[data-markdown]');
-      },
-      callback: mdDeferred.resolve
-    },
     // Zoom reveal/in and out with Alt+click
     {
       src: 'reveal/plugin/zoom-js/zoom.js',
@@ -84,21 +71,19 @@ Reveal.initialize({
 
 });
 
-Reveal.addEventListener( 'ready', function( event ) {
-  angular.injector(["ng"]).invoke(function($q) {
+Reveal.addEventListener('ready', function( event ) {
 
+  // ensure code examples don't get bound (i.e stop '{{' interpolation)
+  ;[].forEach.call(document.querySelectorAll("pre code"), function(el) {
+    el.setAttribute("ng-non-bindable", true);
+    hljs.highlightBlock(el);
+  });
 
-    // bootstrap the slides after they've been markdown compiled
-    $q.all([mdPromise]).then(function() {
+  angular.bootstrap(document.body, ["slides"]);
 
-      // ensure code examples don't get bound (i.e stop '{{' interpolation)
-      ;[].forEach.call(document.querySelectorAll("pre code"), function(el) {
-        el.setAttribute("ng-non-bindable", true);
-      });
+  // see revealHooks.js
+  runRevealListeners();
 
-
-      angular.bootstrap(document.body, ["slides"]);
-    })
-  })
 });
-
+  
+})();

@@ -1,32 +1,66 @@
-## A tough year
+## My year
 {tags:{state:"title"}}
 
-## Strange bed-fellows
+## The proposition
 
-## A mutual friend, and a new face
+## You built what?!
 
-## Our friend `ng`
+![transitions](img/transitions.gif)
+
+## I was blown away
+
+## Of course I said yes
+
+## I wanted to build cool things
+
+![transitions](img/transitions-b.gif)
+
+## Then I saw the code
+{tags:{state:"bad"}}
+
+![huge javascript file](img/huge-javascript-file.png)
+
+## A quest!
+
+## To unite mutual friend, and a new face
+
+## 
 {tags:{state:"title"}}
 
-## A person of heft
-
-## Smart
+<img class='offset' src="img/ng.png" alt="angular js shield logo">
 
 ## Big ideas
 
-## Visionary
-
 "HTML for web apps"
 
-## D3
+## 
 {tags:{state:"title"}}
 
-## Niche
+<img class='offset' src="img/d3.svg" width=748 alt="d3 logo">
 
-## 'Just a library'
+## Enables cool things
 
-## But...
+<svg id=d3Demo></svg>
 
-## Has some big ideas too
+<script>
+onSlideWithElementShown(document.getElementById("d3Demo"), function(el) {
+  var histo = sectorHistogram();
 
-## Perhaps as big as Angular's
+  function render() { 
+    var randomData = d3.range(1000).map(d3.random.irwinHall(10));
+
+    d3.select(el)
+    .call(histo, randomData)
+  }
+
+  setTimeout(render, 125);
+
+  return function() {
+    d3.select(el).html("");
+  };
+})
+</script>
+
+## Has big ideas too
+
+

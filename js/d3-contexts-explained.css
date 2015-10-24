@@ -1,13 +1,13 @@
 /* TODO refactor script to be more modular - extract from a previous bin */
 .contexts-explained .situation .track {
-  height: 5rem;
+  height: 3rem;
 }
 .contexts-explained .elements.track {
   font-size: 2rem;
 }
 .contexts-explained .situation, .contexts-explained .contexts {
   float: left;
-  width: 45.5%;
+  width: 40%;
   margin-right: 2rem;
 }
 .contexts-explained p {
@@ -16,6 +16,16 @@
 .contexts-explained h2 {
   font-size: 3rem;
 }
+
+.contexts-explained .eq {
+  float: left;
+  width: 10%;
+  font-size: 5rem;
+  color: red;
+  padding-top: 30%;
+  font-weight: bold;
+}
+
 .contexts-explained h3 {
   font-size: 2rem;
   margin: 2rem 0;

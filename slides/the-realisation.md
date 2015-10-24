@@ -1,26 +1,59 @@
-## I had a moment of doubt
+## A dark night of the soul
+{tags:{state:"bad"}}
 
-## Why do all the apps I build look the same?
+## How are newbies building cooler apps?
 
-## Why did people new to D3 + ng build cooler stuff than me?
+## An unsettling realisation
 
-## Maybe there was something wrong with me
+## An example
+{tags:{state:"title"}}
 
-## Maybe I had been indoctrinated
+## Editable chart
 
-## Then I realised
+- x/y plot
+- editable data
+- update on change
 
-## I had developed
+## Ok, we've done that before
 
-## Programmer vision
+## Chart component
 
-## A world of hierarchy
+![boring chart](img/chart-boring.png)
 
-## ...and rules
+## Editing component
 
-## Where simple things were impossible
+![boring modal](img/chart-modal.png)
+
+## BORING!
+{"tags":{"state": "bad"}}
+
+## Users don't care about components
 
 ## 
-{todo: "programmer vision"}
+
+![hierarchy](img/hierarchy.png)
+
+## ...they don't even see them
+
+## PROGRAMMER VISION!
+{"tags":{"state": "bad"}}
+
+![hierarchy](img/hierarchy.png)
+
+## Where the ambitious...
+
+## ...is sacrificed to optimise the average
+
+## Users don't care about 'best practice'
+
+## 'Best practice' should be making things easier
+
+## ...not limiting you to easy things
+
+## Did I want to be an enterprise architect?!
+{tags:{state:"bad"}}
+
+![uml, ugh](img/uml.png)
+
 
 

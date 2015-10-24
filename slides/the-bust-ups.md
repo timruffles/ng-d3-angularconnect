@@ -1,17 +1,29 @@
-## Collaboration
+## Back to the quest
 {tags:{state:"title"}}
 
-## Attempt 1
+## How to use D3's powers
 
-## Best practice
+## Without...
+
+![huge javascript file](img/huge-js.png)
+
+## Or losing benefits of Angular?
+
+## I brought 'best practice'
 
 ## `ng` view concerns live in?
 
 ## `<directives>`
 
-## Making HTML a language fit for your app
+## App-flavoured HTML
 
-Not `<div class='profile'>`, but `<profile>`
+```html
+<!-- BOOO!! -->
+<div class='profile'></div>
+
+<!-- YAAAAY! -->
+<profile></profile>
+````
 
 ## One directive per chart
 
@@ -19,94 +31,43 @@ Not `<div class='profile'>`, but `<profile>`
 
 ## `<bar-chart>`
 
-```html
-<bar-chart
-  series="ctrl.series"
-  y-scale="ctrl.yScale"
-  >
-</bar-chart>
-```
+    <div ng-controller='ReportCtrl as ctrl'>
+      <bar-chart
+        series="ctrl.series"
+        y-scale="ctrl.yScale"
+        >
+      </bar-chart>
+    </div>
 
-## Ok for completely generic bits
+## Sometimes, great!
 
-## e.g sparklines
+## 
 
-## But...
-{tags:{state:"bad"}}
+<script type=eg code-sample>
+  <form ng-controller="TimeCtrl as timeCtrl" name=timeForm>
+    <clock-input ng-model="timeCtrl.item.time" name=time 
+      >
+    </clock-input>
+  </form>
+</script>
 
-## We had more ambition
+## `ngModelController` FTW!
 
-## Moving data between charts
-
-## Element consistency
-
-## First clash
-{tags:{state:"bad"}}
-
-## The selfishness of `<components>`
-
-## `<components>` won't share their DOM
-
-## No overlapping behaviours
-
-![overlap](img/oo.png)
-
-## Attempt 2
-{tags:{state:"subtitle"}}
-
-## Stacking attributes
-
-## Attribute directives
-
-```html
-<svg
-  bar-chart='{
-    data: ctrl.data,
-  }'
-
-  line-graph='{
-    data: ctrl.data,
-  }'
-  >
-</svg>
-```
-
-## Can share!
-{tags:{state:"good"}}
-
-```html
-<svg bar-chart line-graph>
-  <g class='some-data'>
-  </g>
-</svg>
-```
-
-## But..
-{tags:{state:"bad"}}
-
-## No isolate...
-{todo: "show dupe isolate error"}
-
-## Not idiomatic
-
-## Loses D3's insane composability
-
-## Attempt 3
-{tags:{state:"subtitle"}}
-
-## Take a step back
-
-## Why declarative?
-{todo: "talk about - is it worth it"}
-
-## Break apart concerns
-
-## Angular holds state
-
-## D3 renders
+## No giant files!
 
 ## But...
 {tags:{state:"bad"}}
+
+## Our most ambitious plans were thwarted
+
+## Web-components selfishly horde `<DOM>`
+
+## Remember collaboration?
+
+![transitions](img/transitions-b.gif)
+
+
+
 
 
 
